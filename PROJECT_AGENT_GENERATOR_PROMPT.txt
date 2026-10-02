@@ -1,0 +1,25 @@
+DCM PROJECT AGENT GENERATOR (TEMİZ TEK DOSYA AGENTS.MD ÜRETİCİSİ)
+========================================================================
+
+Amaç (Purpose)
+--------------
+Mevcut projeyi salt-okunur olarak analiz et ve proje kökünde TEK BİR TEMİZ `AGENTS.md` dosyası oluştur veya güncelle.
+
+🛑 KESİN KURALLAR & SIFIR KİRLİLİK POLİTİKASI:
+- Proje içinde ASLA `.codex/`, `.agents/skills/` veya yerel skill klasörleri OLUŞTURMA.
+- Projede ekstra doküman çöplüğü (docs/project-agent-skills.md vb.) YARATMA.
+- Tüm yetenekler ve kurallar merkezi GUIDELINES altındaki global skill'lerden doğrudan referans alınır.
+- Çıktı SADECE ve SADECE proje kök dizinindeki `AGENTS.md` dosyasıdır.
+
+Girdiler (Inputs)
+-----------------
+- PROJECT_ROOT: Analiz edilen projenin mutlak yolu.
+- MODE: ANALYZE veya GENERATE (Açıkça GENERATE denmedikçe salt-okunur ANALYZE çalışır).
+- GLOBAL_GUIDELINES_ROOT: Yerel ortamdaki GUIDELINES reposunun yolu (Örn: C:/Users/.../Desktop/GUIDELINES veya ~/GUIDELINES veya ../GUIDELINES)
+
+İş Akışı (Workflow)
+-------------------
+1. Projenin package.json, veritabanı şemaları, UI framework'ü ve mimarisini tara.
+2. Hangi merkezi skill'lerin (bespoke-frontend-master, resilient-backend-architect, modern-data-engineer, seo-growth-architect, fullstack-security-auditor, ecommerce-payments-engine vb.) bu proje için geçerli olduğunu belirle.
+3. Proje köküne tek bir `AGENTS.md` dosyası oluştur/güncelle.
+4. Bu `AGENTS.md` dosyası içinde projenin stack'ini, mimarisini ve merkezi `GUIDELINES/skills/` bağlantılarını tanımla.
