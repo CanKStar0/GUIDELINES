@@ -12,14 +12,14 @@ Eliminates the friction of manual skill selection. Analyzes incoming user prompt
 ## ⚡ 1. SPEED, EFFICIENCY & ANTI-THRASHING PRINCIPLES
 
 1. **Terminal Discipline (`run_command` Restriction):**
-   - Shell commands are strictly reserved for package management (`npm i`, `pnpm add`), builds (`npm run build`, `tsc`), and test suites (`npm test`).
-   - Using terminal commands to search files (`dir`, `ls`, `Get-ChildItem`) or read file contents (`cat`, `type`, `Get-Content`) is STRICTLY PROHIBITED. Use built-in fast tools (`grep_search`, `find_by_name`, `view_file`).
+   - Shell commands are reserved for package management (`npm i`, `pnpm add`), builds (`npm run build`, `tsc`), test suites (`npm test`), and structured repository checks (`git status`, `git ls-files`).
+   - Aimless terminal browsing loops or dumping raw file contents (`cat`, `type`, `Get-Content`) is STRICTLY PROHIBITED. Use native `view_file` calls with explicit line slicing.
 2. **In-Session Read Cache:**
    - If a file has already been read during this conversation session, its content is already present in working memory. Re-reading the same file repeatedly in loops is forbidden.
 3. **Targeted Slice Reads:**
-   - Avoid blind 800-line full-file dumps. Use `grep_search` to pinpoint the exact code symbol, then load only the relevant line range (`StartLine / EndLine`).
-4. **Fast-Track for Minor Edits:**
-   - For trivial styling, typo corrections, single-line adjustments, or minor config changes, bypass bulky skill manuals. Edit the target file directly and verify.
+   - Avoid blind 800-line full-file dumps. Target the known symbol or line range (`StartLine / EndLine`) rather than dumping entire files.
+4. **Fast-Track Bounds:**
+   - Fast-track applies strictly to single-file, under-15-line trivial cosmetic, typography, or copy adjustments. Never fast-track API, DB, Auth, Payments, or architectural state changes.
 
 ---
 
@@ -50,7 +50,7 @@ Eliminates the friction of manual skill selection. Analyzes incoming user prompt
 
 1. **Tier 1 (Immediate Intent):** Current prompt and immediate 1–2 turn follow-ups. Never scan 50-turn-old raw transcripts.
 2. **Tier 2 (Active Project State):** Architectural decisions verified via `output/roadmap.json` or `implementation_plan.md`.
-3. **Tier 3 (Physical Code as SSOT):** Live files on disk are the sole ground truth. Discard past chat code snippets; verify live code via `view_file` / `grep_search`.
+3. **Tier 3 (Physical Code as SSOT):** Live files on disk are the sole ground truth. Discard past chat code snippets; verify live code via `view_file`.
 4. **Tier 4 (On-Demand Skills):** Load required expert skills via `view_file` only when needed.
 
 ---

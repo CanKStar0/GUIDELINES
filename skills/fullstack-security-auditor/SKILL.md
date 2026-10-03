@@ -48,7 +48,7 @@ The following security vulnerabilities are **STRICTLY PROHIBITED**:
 
 ### 2. XSS (Cross-Site Scripting) Defense
 - All dynamic user-submitted HTML must be sanitized before rendering into the DOM:
-  - React / Next.js: Raw `dangerouslySetInnerHTML` is prohibited unless explicitly sanitized via `DOMPurify.sanitize(content)`.
+  - React / Next.js: Raw `dangerouslySetInnerHTML` is prohibited unless explicitly sanitized. For Server-Side Rendering (SSR) and React Server Components (RSC), use `isomorphic-dompurify` (standard `DOMPurify` will crash with `window is not defined` on the server).
   - Raw unescaped user data must never be directly injected into markup; preserve React's default string escaping and `textContent` bindings.
 
 ### 3. Cryptographic Authentication (Argon2id Baseline)
@@ -70,7 +70,8 @@ export async function verifyPassword(hash: string, plain: string): Promise<boole
 Injected at middleware or reverse proxy (`next.config.js` / Cloudflare) layers:
 ```typescript
 export const securityHeaders = [
-  { key: "Content-Security-Policy", value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:;" },
+  // Strict CSP: Never use 'unsafe-eval' or permissive 'unsafe-inline' scripts in production; use nonces or strict hashes
+  { key: "Content-Security-Policy", value: "default-src 'self'; script-src 'self' https:; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" },
   { key: "X-Frame-Options", value: "DENY" },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },

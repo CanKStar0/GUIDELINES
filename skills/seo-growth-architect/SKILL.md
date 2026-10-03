@@ -55,21 +55,33 @@ Sitemap: https://www.example.com/sitemap.xml
 ```
 
 ### 2. Multi-Language Hreflang & OpenGraph
-```html
-<link rel="canonical" href="https://www.example.com/products/ai-terminal" />
 
-<!-- Multi-Language Hreflang Tags -->
-<link rel="alternate" hreflang="en" href="https://www.example.com/en/products/ai-terminal" />
-<link rel="alternate" hreflang="tr" href="https://www.example.com/tr/products/ai-terminal" />
-<link rel="alternate" hreflang="nl" href="https://www.example.com/nl/products/ai-terminal" />
-<link rel="alternate" hreflang="x-default" href="https://www.example.com/en/products/ai-terminal" />
+In Next.js App Router, declare alternates and OpenGraph via the native `Metadata` API (never inject manual `<link>` tags into root heads):
+```typescript
+import type { Metadata } from "next";
 
-<!-- OpenGraph & Social Cards -->
-<meta property="og:type" content="website" />
-<meta property="og:title" content="AI Finance Terminal | Real-Time Market Analytics" />
-<meta property="og:description" content="Analyze financial markets with empirical depth and AI intelligence." />
-<meta property="og:image" content="https://www.example.com/assets/og-cover.jpg" />
-<meta name="twitter:card" content="summary_large_image" />
+export const metadata: Metadata = {
+  title: "AI Finance Terminal | Real-Time Market Analytics",
+  description: "Analyze financial markets with empirical depth and AI intelligence.",
+  alternates: {
+    canonical: "https://www.example.com/products/ai-terminal",
+    languages: {
+      en: "https://www.example.com/en/products/ai-terminal",
+      tr: "https://www.example.com/tr/products/ai-terminal",
+      nl: "https://www.example.com/nl/products/ai-terminal",
+      "x-default": "https://www.example.com/en/products/ai-terminal",
+    },
+  },
+  openGraph: {
+    type: "website",
+    title: "AI Finance Terminal | Real-Time Market Analytics",
+    description: "Analyze financial markets with empirical depth and AI intelligence.",
+    images: [{ url: "https://www.example.com/assets/og-cover.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
+};
 ```
 
 ### 3. Structured Data (Schema.org JSON-LD)

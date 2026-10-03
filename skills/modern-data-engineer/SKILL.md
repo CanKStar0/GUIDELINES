@@ -100,9 +100,9 @@ await db.transaction(async (tx) => {
   const [product] = await tx.select().from(products).where(eq(products.id, productId)).for("update");
   if (product.stock < quantity) throw new Error("Insufficient stock available.");
 
-  // 2. Decrement stock and insert order record atomically
+  // 2. Decrement stock and insert order record atomically (initial status pending_payment)
   await tx.update(products).set({ stock: product.stock - quantity }).where(eq(products.id, productId));
-  await tx.insert(orders).values({ userId, totalCents, status: "paid" });
+  await tx.insert(orders).values({ userId, totalCents, status: "pending_payment" });
 });
 ```
 

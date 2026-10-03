@@ -89,7 +89,7 @@ Create token names based on **purpose and semantic role**, never by visual color
 - `primary-foreground`
 - `success`
 - `warning`
-- `danger`
+- `destructive` (or `danger` alias)
 - `info`
 
 Domain-specific semantic tokens may be defined when required (e.g., for a developer tool):
@@ -111,16 +111,16 @@ To eliminate sloppy AI output and substandard CSS execution, every component mus
 
 ### A. Viewports & Safe Areas
 - **Use `h-dvh` instead of `h-screen` or `100vh`:** Standard `100vh` breaks on mobile Safari/Chrome due to dynamic address bars. Always use dynamic viewport height (`h-dvh`, `min-h-dvh`).
-- **Respect mobile safe areas:** Use `pb-safe` or `padding-bottom: env(safe-area-inset-bottom)` for fixed bottom bars, modals, or sheets to avoid overlapping the iOS home indicator.
+- **Respect mobile safe areas:** Use `pb-safe` (when `tailwindcss-safe-area` is configured) or standard CSS `padding-bottom: env(safe-area-inset-bottom)` for fixed bottom bars, modals, or sheets to avoid overlapping the iOS home indicator.
 
 ### B. Typography Mechanics
-- **Headings (`h1`–`h4`):** Always apply `text-balance` to headings to prevent awkward single-word orphan wraps.
-- **Body & Paragraphs:** Apply `text-pretty` to multiline paragraphs for clean typographic rags.
+- **Headings (`h1`–`h4`):** Always apply `text-balance` (Tailwind v3.3+) to headings to prevent awkward single-word orphan wraps.
+- **Body & Paragraphs:** Apply `text-pretty` (Tailwind v3.4+) to multiline paragraphs for clean typographic rags.
 - **Numbers, Metrics & Timestamps:** Always apply `tabular-nums` (`font-variant-numeric: tabular-nums`) to tables, prices, counters, countdowns, timers, and KPI figures so digits don't jump horizontally on update.
 - **Tight Headings:** Use tight leading (`leading-tight` or `tracking-tight`) on large display headings (`text-3xl` and above). Never leave default loose leading on giant text.
 
 ### C. Sizing & Spacing Mechanics
-- **Square Elements:** Use `size-*` instead of repeating `w-* h-*` (e.g., `size-4`, `size-8`, `size-10`).
+- **Square Elements:** Use `size-*` (Tailwind v3.4+) or `w-* h-*` on older releases (e.g., `size-4`, `size-8`, `size-10`).
 - **Standard Scale:** Stick to the standardized spacing scale (`4`, `8`, `12`, `16`, `24`, `32px`). Never use arbitrary pixel classes like `p-[13px]` or `gap-[7px]`.
 
 ### D. Component Primitives First

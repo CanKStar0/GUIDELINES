@@ -97,38 +97,45 @@ export const CreateOrderSchema = z.object({
 export type CreateOrderDTO = z.infer<typeof CreateOrderSchema>;
 ```
 
-### 2. Idempotency & Distributed Locking
-Every financial or state-altering `POST/PUT` mutation must honor an `Idempotency-Key` header:
+### 2. Idempotency & Distributed Locking (Zero Race Conditions)
+Every financial or state-altering `POST/PUT` mutation must honor an `Idempotency-Key` header with atomic locking:
 ```typescript
 export async function handleIdempotentMutation(key: string, fn: () => Promise<any>) {
+  // 1. Check if already processed
   const cachedResponse = await redis.get(`idempotency:${key}`);
   if (cachedResponse) {
-    return JSON.parse(cachedResponse); // Return original result without re-executing
+    return JSON.parse(cachedResponse);
   }
 
-  const result = await fn();
-  await redis.set(`idempotency:${key}`, JSON.stringify(result), "EX", 86400); // 24-hour TTL
-  return result;
+  // 2. Acquire atomic distributed lock (NX=Not Exists) to eliminate TOCTOU race conditions
+  const acquiredLock = await redis.set(`idempotency:lock:${key}`, "processing", "EX", 30, "NX");
+  if (!acquiredLock) {
+    throw new Error("Concurrent operation in progress for this idempotency key. Please retry shortly.");
+  }
+
+  try {
+    const result = await fn();
+    await redis.set(`idempotency:${key}`, JSON.stringify(result), "EX", 86400); // 24-hour TTL
+    return result;
+  } finally {
+    await redis.del(`idempotency:lock:${key}`);
+  }
 }
 ```
 
-### 3. Network Timeouts via AbortController
+### 3. Network Timeouts via Modern AbortSignal
 No outgoing network request may hang indefinitely:
 ```typescript
-export async function fetchWithTimeout(url: string, options: RequestInit, timeoutMs = 8000) {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
-
+export async function fetchWithTimeout(url: string, options: RequestInit = {}, timeoutMs = 8000) {
   try {
-    const response = await fetch(url, { ...options, signal: controller.signal });
+    const signal = options.signal ?? AbortSignal.timeout(timeoutMs);
+    const response = await fetch(url, { ...options, signal });
     return response;
   } catch (err: any) {
-    if (err.name === "AbortError") {
+    if (err.name === "TimeoutError" || err.name === "AbortError") {
       throw new Error(`External service timed out (${timeoutMs}ms limit exceeded).`);
     }
     throw err;
-  } finally {
-    clearTimeout(timeoutId);
   }
 }
 ```
@@ -148,7 +155,7 @@ export async function enforceTokenBudget(orgId: string, estimatedTokens: number)
 
 ---
 
-# STANDARDIZED API ENVELOPE (RFC 7807 COMPLIANT)
+# STANDARDIZED API ENVELOPE & ERROR FORMAT
 
 ### Success Response (200 / 201):
 ```json
@@ -166,7 +173,7 @@ export async function enforceTokenBudget(orgId: string, estimatedTokens: number)
 }
 ```
 
-### Error Response (RFC 7807 Format - 4xx / 5xx):
+### Standard Problem Error Response (4xx / 5xx):
 ```json
 {
   "success": false,

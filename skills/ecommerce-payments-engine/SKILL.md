@@ -68,14 +68,16 @@ export function calculateOrderSummary(items: CartItem[], discountCents = 0, ship
 ### 2. Cryptographic Webhook Verification (Stripe Example)
 ```typescript
 import Stripe from "stripe";
+import { env } from "@/env"; // Validated startup Zod environment schema
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: "2024-06-20" });
+const stripe = new Stripe(env.STRIPE_SECRET_KEY, { apiVersion: "2024-06-20" });
 
+// Note: In Next.js App Router, extract rawBody using `await req.text()`; never parse JSON first
 export async function handleStripeWebhook(rawBody: string | Buffer, signature: string) {
   let event: Stripe.Event;
 
   try {
-    event = stripe.webhooks.constructEvent(rawBody, signature, process.env.STRIPE_WEBHOOK_SECRET!);
+    event = stripe.webhooks.constructEvent(rawBody, signature, env.STRIPE_WEBHOOK_SECRET);
   } catch (err: any) {
     throw new Error(`Webhook Signature Verification Failed: ${err.message}`);
   }

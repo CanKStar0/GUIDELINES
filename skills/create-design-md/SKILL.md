@@ -33,7 +33,7 @@ Never pick random palette colors. Distribute visual weight strictly:
 - `text-muted`: Supporting metadata and secondary text
 - `primary`: Interactive brand accent (buttons, active states)
 - `primary-foreground`: Text rendered on top of primary accent
-- `destructive`: Error states, danger alerts, destructive actions
+- `destructive`: Error states, danger alerts, destructive actions (or `danger` alias)
 - `warning`: Attention, pending, or cautionary alerts
 - `success`: Completed, verified, or positive status
 ```
