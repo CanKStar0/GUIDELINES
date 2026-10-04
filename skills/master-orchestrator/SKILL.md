@@ -60,7 +60,7 @@ Eliminates the friction of manual skill selection. Analyzes incoming user prompt
 | Task / Domain | Scope & Focus | Autonomous Skill |
 | :--- | :--- | :--- |
 | **All Tasks (Unconditional)** | Intent Deconstruction, Implicit Requirements, Deep Research, Self-Healing | `autonomous-task-auditor` + `superpowers-execution-harness` |
-| **Interface, UI/UX, React, Next.js** | Baseline UI (`h-dvh`, `text-balance`, `tabular-nums`), WCAG A11y, Anti-Jank Motion, Anti-AI-Slop | `bespoke-frontend-master` |
+| **Interface, UI/UX, React, Next.js** | Baseline UI (`h-dvh`, `text-balance`, `tabular-nums`), Zero Badges/Eyebrows, Plain Human Copy, WCAG A11y, Anti-Jank Motion | `bespoke-frontend-master` |
 | **Design System, Tokens, UI Audit** | Generating/Updating `DESIGN.md`, 60-30-10 Palette, UI Audit & Handoff Plans | `create-design-md` |
 | **Backend, API, Route Handlers** | Zero Happy-Path, Rate Limiting, Idempotency, Quota Guards, Zod DTOs | `resilient-backend-architect` |
 | **Database, Schema, ORM, Vectors** | Drizzle/Prisma, pgvector Embeddings, ACID Transactions, Connection Pooling | `modern-data-engineer` |
