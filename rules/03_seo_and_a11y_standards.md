@@ -17,11 +17,12 @@
 
 ---
 
-## ♿ 2. ERİŞİLEBİLİRLİK (A11Y) STANDARTLARI
+## ♿ 2. ERİŞİLEBİLİRLİK (A11Y - WCAG 2.2 AA) STANDARTLARI
 
 1. **Aria Labels:**
    - Metin içermeyen tüm ikon butonlarında (`<button aria-label="Arama yap">`) zorunlu `aria-label` bulunacaktır.
-2. **Focus Indicators:**
-   - Klavye ile gezinmede görünür focus ring (`focus-visible:ring-2 focus-visible:ring-blue-500`) olmalıdır. `outline-none` tek başına bırakılamaz.
-3. **WCAG AA Renk Kontrastı:**
-   - Metin ve arka plan renkleri arasında WCAG AA standardını karşılayan yüksek kontrast oranı (en az 4.5:1) bulunmalıdır.
+2. **Focus Indicators (Görünür Odak):**
+   - Klavye ile gezinmede görünür yüksek kontrastlı focus ring (`focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2` veya semantik eşdeğeri) zorunludur. `outline-none` asla tek başına bırakılamaz.
+3. **WCAG 2.2 AA Renk Kontrastı & Dokunma Alanı:**
+   - Metin ve arka plan renkleri arasında WCAG AA standardını karşılayan yüksek kontrast oranı (en az 4.5:1, büyük metinlerde 3:1) bulunmalıdır.
+   - Dokunmatik ekranlar ve mobil butonlarda hedef boyutu minimum 44x44px (masaüstünde min 24x24px) olmalıdır.

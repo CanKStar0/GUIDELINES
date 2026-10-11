@@ -70,7 +70,10 @@ export function calculateOrderSummary(items: CartItem[], discountCents = 0, ship
 import Stripe from "stripe";
 import { env } from "@/env"; // Validated startup Zod environment schema
 
-const stripe = new Stripe(env.STRIPE_SECRET_KEY, { apiVersion: "2024-06-20" });
+// Use the installed Stripe SDK's latest supported apiVersion (align with your project's Stripe SDK types)
+const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
+  apiVersion: (process.env.STRIPE_API_VERSION as any) ?? "2025-01-27.acacia"
+});
 
 // Note: In Next.js App Router, extract rawBody using `await req.text()`; never parse JSON first
 export async function handleStripeWebhook(rawBody: string | Buffer, signature: string) {

@@ -1,12 +1,12 @@
 # 🗺️ DYNAMIC ROADMAP & STATE MACHINE PROTOCOL
 
-> **ZORUNLU KURAL:** Çok adımlı (2'den fazla adımı olan) hiçbir görev doğrudan koda dökülemez veya sadece metin planı ile bırakılamaz. Projenin canlı `.agent/roadmap.json` durum dosyası oluşturulmalı ve her adım ampirik doğrulama ile güncellenmelidir.
+> **ZORUNLU KURAL:** Çok adımlı (2'den fazla adımı olan) hiçbir görev doğrudan koda dökülemez veya sadece metin planı ile bırakılamaz. Projede canlı durum takibi (Antigravity ortamında `implementation_plan.md` plan artifact'i, CLI/otomasyon ortamlarında `.agent/roadmap.json`) oluşturulmalı ve her adım ampirik doğrulama ile güncellenmelidir.
 
 ---
 
 ## 🏛️ 1. MİMARİ VE STATE MACHINE AKIŞI
 
-Karmaşık ve çok adımlı görevlerde ilerleme durumu atomik adımlara bölünür ve projenin durum dosyasında (`output/roadmap.json` veya `implementation_plan.md` plan artifact'i) bir **State Machine** olarak takip edilir.
+Karmaşık ve çok adımlı görevlerde ilerleme durumu atomik adımlara bölünür ve durum dosyasında (Antigravity'de `implementation_plan.md` artifact'i, CLI ortamında `.agent/roadmap.json`) bir **State Machine** olarak takip edilir.
 
 ### Adım Statüleri:
 - **`pending`**: Bekleyen adım.

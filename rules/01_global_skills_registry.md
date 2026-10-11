@@ -26,15 +26,15 @@ Merely writing skill names in output text is prohibited. **Before modifying any 
 2. **🧠 Autonomous Task Auditor (`autonomous-task-auditor`):**
    - Dinamik gereksinim analizi, örtük ihtiyaçlar, derin araştırma ve otonom self-healing.
 3. **🎨 Bespoke Frontend Master (`bespoke-frontend-master`):**
-   - Proje-odaklı tasarım anayasası, semantik tokenlar, anti-AI-slop kuralları ve erişilebilirlik.
+   - Proje-odaklı tasarım anayasası, semantik tokenlar, anti-AI-slop kuralları ve erişilebilirlik (WCAG 2.2 AA).
 4. **📐 Design System Architect (`create-design-md`):**
    - Kök `DESIGN.md` sözleşmesi üretimi, 60-30-10 renk dağılımı, tipografi/yüzey hiyerarşisi ve UI audit planları.
 5. **🏗️ Resilient Backend Architect (`resilient-backend-architect`):**
    - Sıfır happy-path, dağıtık rate limiting, atomik idempotency kilitleri, kota denetimi ve katı Zod DTO'ları.
 6. **🗄️ Modern Data Engineer (`modern-data-engineer`):**
-   - Drizzle/Prisma ORM, pgvector indeksleme, sunucusuz bağlantı havuzlama (pooler) ve ACID işlemleri.
+   - Drizzle/Prisma ORM, pgvector indeksleme (Gemini: 768, OpenAI: 1536), sunucusuz bağlantı havuzlama (pooler) ve ACID işlemleri.
 7. **🛒 E-Commerce & Payments Engine (`ecommerce-payments-engine`):**
-   - Integer cent aritmetiği, Stripe & İyzico 3DS, kriptografik webhook doğrulaması ve sipariş durum makineleri.
+   - Integer cent aritmetiği, modern Stripe & İyzico 3DS, kriptografik webhook doğrulaması ve sipariş durum makineleri.
 8. **🛡️ Fullstack Security Auditor (`fullstack-security-auditor`):**
    - OWASP Top 10 savunması, SSR uyumlu XSS temizliği, Argon2id auth, katı CSP ve sır güvenliği.
 9. **🔍 SEO & Growth Architect (`seo-growth-architect`):**

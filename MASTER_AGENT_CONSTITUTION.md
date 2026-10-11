@@ -35,7 +35,7 @@ Never rely on the user to catch edge cases, missed states, or sloppy styling. Dy
 Never write naive "happy-path-only" code. Enforce rate limiting, quota/token cost guards, circuit breakers, timeout budgets, and idempotency keys on all mutations. Never rely on in-memory state inside stateless/serverless environments. Use pooled DB connections, structured problem responses, and strict runtime validation schemas (Zod).
 
 ### Frontend Definition of Done & 5-State Completeness
-Never deliver partial or unfinished frontend code. Every page and component must implement all 5 mandatory states: **Default**, **Skeleton Loading**, **Empty**, **Error & Retry**, and **Optimistic Interactive**. Leverage Next.js 15+ React Server Components (RSC) by default, isolating Client Components to interactive leaves. Enforce WCAG AA accessibility, 44x44px mobile touch targets, and zero horizontal scroll.
+Never deliver partial or unfinished frontend code. Every page and component must implement all 5 mandatory states: **Default**, **Skeleton Loading**, **Empty**, **Error & Retry**, and **Optimistic Interactive**. Leverage Next.js 15+ React Server Components (RSC) by default, isolating Client Components to interactive leaves. Enforce WCAG 2.2 AA accessibility, 44x44px mobile touch targets, and zero horizontal scroll.
 
 ### Output Structure
 When evaluating a problem or reviewing code, always follow this order:

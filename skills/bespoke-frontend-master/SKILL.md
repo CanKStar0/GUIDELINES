@@ -17,7 +17,7 @@ Before generating any code or UI, the existing repository must be thoroughly ins
 3. Existing brand identity
 4. Existing component patterns
 5. User workflow and information hierarchy
-6. Accessibility (WCAG 2.1 AA compliance)
+6. Accessibility (WCAG 2.2 AA compliance)
 7. Responsive behavior & mobile viewports
 8. Visual decoration
 
@@ -120,8 +120,9 @@ To eliminate sloppy AI output and substandard CSS execution, every component mus
 - **Tight Headings:** Use tight leading (`leading-tight` or `tracking-tight`) on large display headings (`text-3xl` and above). Never leave default loose leading on giant text.
 
 ### C. Sizing & Spacing Mechanics
-- **Square Elements:** Use `size-*` (Tailwind v3.4+) or `w-* h-*` on older releases (e.g., `size-4`, `size-8`, `size-10`).
+- **Square Elements:** Use `size-*` as modern baseline (e.g., `size-4`, `size-8`, `size-10`).
 - **Standard Scale:** Stick to the standardized spacing scale (`4`, `8`, `12`, `16`, `24`, `32px`). Never use arbitrary pixel classes like `p-[13px]` or `gap-[7px]`.
+- **Tailwind Version Awareness:** In Tailwind CSS v4, define tokens in CSS via `@theme` directives; in Tailwind v3, define tokens in `tailwind.config.*`. Never inject obsolete v3 config files into v4 setups.
 
 ### D. Component Primitives First
 - **No Div-Buttons:** Never use `<div onClick={...}>` or `<span onClick={...}>` as interactive triggers. Use native `<button>` or accessible unstyled primitives (`Base UI`, `Radix UI`, `React Aria`).
@@ -176,10 +177,12 @@ The predictable AI template of sticking an "eyebrow" label or a colorful badge a
   - Floating badges highlighting generic features (`⚡ Ultra Fast`, `🔒 Bank Grade`, `✨ AI Powered`).
   - Pill tags clustered under primary CTA buttons (`[No credit card required]`, `[Cancel anytime]`).
   - Decorative tag pills stamped onto cards or section corners.
-- **The Only Permitted Exception (Operational State Only):**
-  - Badges are strictly banned for decoration or marketing.
-  - A subtle status indicator is permitted **ONLY for genuine real-time transactional states** in operational systems (e.g., an order table showing `Paid` / `Pending`, a server health dashboard showing `Online` / `Degraded`).
-  - Even in operational systems, prefer minimal text with a clean status dot over rounded bubbly pills.
+- **The Only Permitted Exception (Genuine Operational & Commercial States):**
+  - Badges are strictly banned for decoration or marketing posturing.
+  - Subtle status indicators are permitted **ONLY for genuine real-time transactional, inventory, or operational states**:
+    - Operational: Server status (`Online` / `Degraded`), Order state (`Paid` / `Processing` / `Shipped`).
+    - Commercial/E-Commerce: Inventory availability (`In Stock` / `Sold Out`), active discount tags (`-20%`).
+  - Prefer clean typographic labels with status dots or subtle border pills over loud, rounded bubbly gradients.
 
 ---
 
@@ -221,7 +224,7 @@ Never use the following abstract, alienating corporate terms in customer-facing 
 
 ---
 
-# 6. ACCESSIBILITY CONTRACTS (WCAG 2.1 AA)
+# 6. ACCESSIBILITY CONTRACTS (WCAG 2.2 AA)
 
 Accessibility is non-negotiable and must be built directly into the DOM structure:
 
@@ -230,9 +233,10 @@ Accessibility is non-negotiable and must be built directly into the DOM structur
    - Every interactive control must have an accessible name.
    - Icon-only buttons **must** have `aria-label` or `aria-labelledby`.
    - Decorative SVGs and icons **must** have `aria-hidden="true"`.
-2. **Keyboard Navigation:**
+2. **Keyboard Navigation & Visible Focus:**
    - All interactive elements must be reachable via `Tab`.
-   - Never remove focus rings without providing an intentional, high-contrast replacement (`focus-visible:ring-2 focus-visible:ring-primary`).
+   - Never remove focus rings without providing an intentional, high-contrast replacement (`focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2`).
+   - Focus must not be obscured by sticky headers or footers (WCAG 2.2 Criterion 2.4.11).
    - `Escape` must dismiss modals, dropdowns, and overlays.
    - Dialogs/modals must trap focus while open and restore focus to the triggering element upon closure.
 3. **Forms & Validation:**
@@ -241,6 +245,8 @@ Accessibility is non-negotiable and must be built directly into the DOM structur
    - Invalid fields must programmatically set `aria-invalid="true"`.
 4. **Color Contrast:**
    - Maintain minimum 4.5:1 contrast for regular text and 3:1 for large text / graphical UI components.
+5. **Target Sizes (WCAG 2.2 Criterion 2.5.8):**
+   - Interactive touch targets must meet minimum 44x44px for mobile devices (`min-h-11 min-w-11`) and minimum 24x24px for desktop compact controls.
 
 ---
 

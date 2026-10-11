@@ -49,7 +49,7 @@ Eliminates the friction of manual skill selection. Analyzes incoming user prompt
 ## ⚡ 3. 4-Tier Smart Context (Zero-Hallucination Tiering)
 
 1. **Tier 1 (Immediate Intent):** Current prompt and immediate 1–2 turn follow-ups. Never scan 50-turn-old raw transcripts.
-2. **Tier 2 (Active Project State):** Architectural decisions verified via `output/roadmap.json` or `implementation_plan.md`.
+2. **Tier 2 (Active Project State):** Architectural decisions verified via `implementation_plan.md` or `.agent/roadmap.json`.
 3. **Tier 3 (Physical Code as SSOT):** Live files on disk are the sole ground truth. Discard past chat code snippets; verify live code via `view_file`.
 4. **Tier 4 (On-Demand Skills):** Load required expert skills via `view_file` only when needed.
 
@@ -59,14 +59,15 @@ Eliminates the friction of manual skill selection. Analyzes incoming user prompt
 
 | Task / Domain | Scope & Focus | Autonomous Skill |
 | :--- | :--- | :--- |
-| **All Tasks (Unconditional)** | Intent Deconstruction, Implicit Requirements, Deep Research, Self-Healing | `autonomous-task-auditor` + `superpowers-execution-harness` |
-| **Interface, UI/UX, React, Next.js** | Baseline UI (`h-dvh`, `text-balance`, `tabular-nums`), Zero Badges/Eyebrows, Plain Human Copy, WCAG A11y, Anti-Jank Motion | `bespoke-frontend-master` |
-| **Design System, Tokens, UI Audit** | Generating/Updating `DESIGN.md`, 60-30-10 Palette, UI Audit & Handoff Plans | `create-design-md` |
+| **All Tasks (Core Kernel)** | Intent Deconstruction, Implicit Requirements, Deep Research, Self-Healing | `autonomous-task-auditor` |
+| **Verification, QA & i18n** | Strict Type Gates, Compiler Exit Code 0, Multi-Language i18n Parity, Hermes Memory | `superpowers-execution-harness` |
+| **Interface, UI/UX, React, Next.js** | Baseline UI (`h-dvh`, `text-balance`, `tabular-nums`), WCAG 2.2 AA, Anti-AI-Slop, Anti-Jank Motion | `bespoke-frontend-master` |
+| **Design System, Tokens, UI Audit** | Generating/Updating `DESIGN.md`, 60-30-10 Palette, Tailwind @theme / Config Audit | `create-design-md` |
 | **Backend, API, Route Handlers** | Zero Happy-Path, Rate Limiting, Idempotency, Quota Guards, Zod DTOs | `resilient-backend-architect` |
-| **Database, Schema, ORM, Vectors** | Drizzle/Prisma, pgvector Embeddings, ACID Transactions, Connection Pooling | `modern-data-engineer` |
+| **Database, Schema, ORM, Vectors** | Drizzle/Prisma, pgvector (Gemini: 768, OpenAI: 1536), ACID Transactions, Pooling | `modern-data-engineer` |
 | **Payments, Checkout, Orders** | Integer Cent Math, Stripe/İyzico 3DS, Webhook Signatures, State Machine | `ecommerce-payments-engine` |
 | **Security, Auth, OWASP, Secrets** | OWASP Top 10, Argon2id, CSRF/XSS Sanitization, Security Headers, RBAC | `fullstack-security-auditor` |
-| **SEO, Growth, CRO, Funnel** | Technical SEO, JSON-LD Schema, Core Web Vitals, AIDA Copy, GA4 DataLayer | `seo-growth-architect` |
+| **SEO, Growth, CRO, Funnel** | Technical SEO, JSON-LD Schema, Core Web Vitals (INP/LCP/CLS), GA4 DataLayer | `seo-growth-architect` |
 | **Image Generation, Assets** | Zero Text, 8K Studio Lighting, Floor Shadows, `generate_image` | `image-generation-studio` |
 
 ---
@@ -75,13 +76,18 @@ Eliminates the friction of manual skill selection. Analyzes incoming user prompt
 
 1. **Active Skills Declaration:**
    ```markdown
-   > 🛡️ **Active Skills:** `master-orchestrator` + `autonomous-task-auditor` + [`target-domain-skills`]
+   > 🛡️ **Devredeki Uzmanlıklar:** `master-orchestrator` + `autonomous-task-auditor` + [`target-domain-skills`]
    ```
-2. **Lean Ingestion:**
-   - Ingest unread skills via `view_file`. Reuse cached memory if previously read.
-3. **Dynamic Execution:**
+2. **Pre-Flight Tech-Stack Sniffing (Framework Alignment):**
+   - In web projects, quickly inspect `package.json` before writing code:
+     - **Next.js:** If >= 15, enforce async `await params` and Next 15 caching; if <= 14, preserve sync patterns.
+     - **React:** If 19, support `useActionState` and `useOptimistic`; if 18, preserve standard state patterns.
+     - **Tailwind CSS:** If v4, configure tokens in CSS via `@theme`; if v3, configure in `tailwind.config.*`.
+3. **Lean Ingestion & Execution:**
+   - Ingest unread domain skills via `view_file`. Reuse cached memory if previously read.
    - Produce strictly typed, architectural solutions aligned with project guidelines.
-4. **Self-Healing & Verification:**
-   - Auto-fix any discovered defects; verify with build/typecheck commands (`npm run build`, `tsc --noEmit`).
+4. **Progress-Based Self-Healing & Verification:**
+   - Run verification commands (`npm run build`, `tsc --noEmit`, test suites).
+   - If errors occur, auto-heal as long as error count decreases. If the same error repeats or halts progress, stop and report root cause to user.
 5. **Deliverable Audit Card:**
    - Conclude with the `Autonomous Task Audit Summary` card.

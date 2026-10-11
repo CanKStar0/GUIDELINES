@@ -63,7 +63,7 @@ GUIDELINES/
 | Skill | Domain & Key Responsibilities |
 | :--- | :--- |
 | **`master-orchestrator`** | Analyzes user prompt intent, automatically determines architectural requirements, and coordinates skill loading order. |
-| **`bespoke-frontend-master`** | Rejects generic "AI slop" templates; enforces project-specific visual identity, semantic tokens, micro-interactions, and accessibility contracts. |
+| **`bespoke-frontend-master`** | Rejects generic "AI slop" templates; enforces project-specific visual identity, semantic tokens, micro-interactions, and WCAG 2.2 AA accessibility contracts. |
 | **`resilient-backend-architect`** | Builds fault-tolerant, concurrency-safe, idempotent, rate-limited APIs with strict Zod schema validation. |
 | **`modern-data-engineer`** | Designs production schemas with Drizzle ORM / Prisma, PostgreSQL indexing, migration safety, and pgvector pipelines. |
 | **`fullstack-security-auditor`** | Inspects OWASP Top 10 vulnerabilities, session/JWT lifecycles, RBAC authorization gates, and sensitive secret hygiene. |

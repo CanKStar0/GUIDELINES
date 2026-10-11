@@ -19,9 +19,9 @@ The following security vulnerabilities are **STRICTLY PROHIBITED**:
 - ✅ **Mandatory:** Authentication tokens must reside exclusively inside `HttpOnly`, `Secure`, `SameSite=Lax` (or `Strict`) cookies that cannot be accessed via JavaScript.
 
 ### 2. IDOR-Prone Database Mutations are BANNED
-- ❌ **Prohibited:** Executing updates or deletes relying solely on resource IDs without verifying owner tenant context (e.g., `DELETE FROM documents WHERE id = ${params.id}`).
+- ❌ **Prohibited:** Executing updates or deletes relying solely on resource IDs without verifying owner tenant context (e.g., `DELETE FROM documents WHERE id = ${id}`).
 - 💣 **Failure Mode:** An authenticated user can alter the numeric or UUID parameter in the URL and modify, delete, or inspect other users' private documents (Insecure Direct Object Reference).
-- ✅ **Mandatory:** Every mutation and fetch query must enforce user/tenant binding: `WHERE id = ${params.id} AND user_id = ${currentUser.id}`.
+- ✅ **Mandatory:** Every mutation and fetch query must enforce user/tenant binding: `WHERE id = ${id} AND user_id = ${currentUser.id}` (in Next.js 15+ App Router, remember to await params first: `const { id } = await params;`).
 
 ### 3. Exposing Sequential Auto-Increment IDs in Public URLs is BANNED
 - ❌ **Prohibited:** Exposing raw sequential database integer IDs in public routes (e.g., `/api/invoices/1042`, `/user/48`).

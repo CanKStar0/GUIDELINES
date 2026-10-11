@@ -1,6 +1,6 @@
 # 🌐 GLOBAL AGENT EXECUTION PROTOCOL (TÜM PROJELER İÇİN GEÇERLİ ANA ANAYASA)
 
-> **Son Güncelleme:** 06 Eylül 2026
+> **Son Güncelleme:** 11 Ekim 2026
 
 ## 🎯 TEMEL ÇALIŞMA VE ZORUNLU İCRA İLKESİ
 
@@ -16,13 +16,14 @@ Antigravity, Cursor, Claude veya herhangi bir AI runtime'ında çalışan TÜM A
 
 ### 🧠 B. Tek Okuma Kuralı (In-Session Read Cache - Sıfır Tekrar)
 - Bir dosya (ister bir `SKILL.md`, ister `package.json`, ister kaynak kodu) bu oturumda daha önce bir kez okunduysa, **içeriği zaten konuşma bağlamındadır.**
-- Aynı dosyayı aynı oturumda tekrar tekrar okumak (`view_file` döngüsü) KESİNLİKLE YASAKTIR. Ajan bağlamındaki mevcut bilgiyi kullanır.
+- Aynı dosyayı aynı oturumda körlemesine tekrar tekrar okumak (`view_file` döngüsü) KESİNLİKLE YASAKTIR. Ajan bağlamındaki mevcut bilgiyi kullanır.
+- **İstisna:** Bir dosya üzerinde kod düzenlemesi (`replace_file_content` / `write_to_file`) yapıldıktan sonra satır kayması veya derleme hatası oluşursa, taze durumu doğrulamak için ilgili blok hedefli olarak yeniden okunabilir.
 
 ### 🎯 C. Nokta Atışı Okuma (Targeted Reads)
 - Büyük dosyalarda körlemesine 800 satır okuma yapılmaz. Bilinen fonksiyon, route veya bileşen satır aralığı (`StartLine / EndLine`) hedeflenerek doğrudan ilgili blok incelenir.
 
 ### ⚡ D. Küçük İşler İçin Hızlı Şerit (Fast-Track Sınırı & Kriterleri)
-- **Fast-Track İstisnası:** Sadece **tek bir dosya**, **en fazla 15 satırlık** önemsiz görsel düzeltme (renk/padding/tipografi) veya metin/çeviri değişikliği içeren durumlarda geçerlidir.
+- **Fast-Track İstisnası:** Sadece **en fazla 15 satırlık** önemsiz görsel düzeltme (renk/padding/tipografi) veya çoklu dil sözlüklerindeki (`en.json`, `tr.json`) senkron metin/çeviri değişiklikleri içeren durumlarda geçerlidir.
 - **KESİN YASAK:** API rotaları, veritabanı şemaları/sorguları, kimlik doğrulama/güvenlik, ödeme akışları ve durum makineleri (state machines) KESİNLİKLE fast-track kapsamına GİREMEZ. Bu tür işlerde ilgili skill (`SKILL.md`) okunmadan koda dokunulamaz.
 
 ---

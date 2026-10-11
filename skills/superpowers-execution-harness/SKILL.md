@@ -1,6 +1,6 @@
 ---
 name: superpowers-execution-harness
-description: "MANDATORY - Must execute view_file on this skill before task execution, multi-language i18n updates, verification gates, or QA auditing. Agent harness methodology, Hermes error memory, and 4-pillar QA."
+description: "Enforces strict compiler verification gates (Exit Code 0), multi-language i18n key parity, Hermes error memory, and 4-pillar QA auditing."
 ---
 
 # 🚀 Superpowers Execution Harness — Engineering Discipline, Memory & Verification Gates
@@ -61,7 +61,7 @@ The following AI habits and execution shortcuts are **STRICTLY PROHIBITED**:
   1. *Symptom:* Concrete error message or runtime stack trace.
   2. *Root Cause:* Underlying architectural or logic failure.
   3. *Permanent Fix:* Side-effect-free remediation.
-  4. *Memory Record:* One-sentence actionable lesson logged to `output/<project>/memory.json` (Max 10 rules).
+  4. *Memory Record:* One-sentence actionable lesson logged to `.agent/memory.json` (Max 10 rules).
 - **Smart Context Window:**
   - Never ingest 50 turns of stale transcripts; rely only on the immediate intent (last 1–2 turns) and live disk code.
 

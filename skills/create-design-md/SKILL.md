@@ -74,7 +74,7 @@ Never pick random palette colors. Distribute visual weight strictly:
   - `radius-lg` (8–12px): Standard cards, content panels.
   - `radius-xl` (12–16px): Modals, dialogs, popovers.
   - `radius-full`: True circular buttons and avatar circles.
-  - *(Note: Decorative badge pills and floating tag clouds are strictly banned).*
+  - *(Note: Decorative marketing badge pills and tag clouds are strictly banned; genuine operational/inventory status tags remain valid).*
 - **Elevation / Shadows:**
   - `shadow-none`: Flat cards, bordered containers.
   - `shadow-sm`: Subtle hover lifts.
@@ -125,7 +125,7 @@ When proposing non-trivial UI improvements, record them in a structured plan:
 ## ⚡ Execution Protocol
 
 1. If `DESIGN.md` does not exist in the project root:
-   - Scan existing styling configurations (`tailwind.config.*`, `globals.css`, theme providers).
+   - Scan existing styling configurations: inspect Tailwind CSS v4 `@theme` in `globals.css` or Tailwind v3 `tailwind.config.*`, CSS root variables, and theme providers.
    - Generate `DESIGN.md` in the project root capturing the real active tokens while enforcing the strict bans on badges, eyebrows, and technical jargon.
 2. If `DESIGN.md` exists:
    - Treat it as the binding visual and copywriting law.

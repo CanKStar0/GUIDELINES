@@ -167,7 +167,7 @@ export async function enforceTokenBudget(orgId: string, estimatedTokens: number)
     "status": "processing"
   },
   "meta": {
-    "timestamp": "2026-09-25T14:00:00Z",
+    "timestamp": "2026-10-11T12:00:00Z",
     "requestId": "req_xyz123"
   }
 }
@@ -186,7 +186,7 @@ export async function enforceTokenBudget(orgId: string, estimatedTokens: number)
     ]
   },
   "meta": {
-    "timestamp": "2026-09-25T14:00:00Z",
+    "timestamp": "2026-10-11T12:00:00Z",
     "requestId": "req_xyz123"
   }
 }

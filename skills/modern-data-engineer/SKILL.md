@@ -81,8 +81,10 @@ CREATE TABLE document_chunks (
     tenant_id UUID NOT NULL,
     document_id UUID NOT NULL,
     content TEXT NOT NULL,
-    metadata JSONB DEFAULT '{}'::jsonb,
-    embedding VECTOR(1536) -- OpenAI text-embedding-3 / Gemini dimensions
+    -- Exact vector dimension must match your chosen model:
+    -- OpenAI text-embedding-3-small: VECTOR(1536) | large: VECTOR(3072)
+    -- Google Gemini text-embedding-004: VECTOR(768)
+    embedding VECTOR(1536)
 );
 
 -- Pre-filtered HNSW Index
