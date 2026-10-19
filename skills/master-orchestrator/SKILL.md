@@ -61,8 +61,8 @@ Eliminates the friction of manual skill selection. Analyzes incoming user prompt
 | :--- | :--- | :--- |
 | **All Tasks (Core Kernel)** | Intent Deconstruction, Implicit Requirements, Deep Research, Self-Healing | `autonomous-task-auditor` |
 | **Verification, QA & i18n** | Strict Type Gates, Compiler Exit Code 0, Multi-Language i18n Parity, Hermes Memory | `superpowers-execution-harness` |
-| **Interface, UI/UX, React, Next.js** | Baseline UI (`h-dvh`, `text-balance`, `tabular-nums`), WCAG 2.2 AA, Anti-AI-Slop, Anti-Jank Motion | `bespoke-frontend-master` |
-| **Design System, Tokens, UI Audit** | Generating/Updating `DESIGN.md`, 60-30-10 Palette, Tailwind @theme / Config Audit | `create-design-md` |
+| **Interface, UI/UX, React, Next.js** | Baseline UI (`h-dvh`, `text-balance`, `tabular-nums`), WCAG 2.2 AA, 3-Era Anti-AI-Slop (67-rule catalog), Anti-Jank Motion | `bespoke-frontend-master` |
+| **Design System, Tokens, Surgical Refinement** | Dual-Context (`PRODUCT.md` + `DESIGN.md`), 60-30-10 Palette, 14 Surgical Playbooks (`/distill`, `/clarify`, `/polish`, `/harden`, etc.) | `create-design-md` |
 | **Backend, API, Route Handlers** | Zero Happy-Path, Rate Limiting, Idempotency, Quota Guards, Zod DTOs | `resilient-backend-architect` |
 | **Database, Schema, ORM, Vectors** | Drizzle/Prisma, pgvector (Gemini: 768, OpenAI: 1536), ACID Transactions, Pooling | `modern-data-engineer` |
 | **Payments, Checkout, Orders** | Integer Cent Math, Stripe/İyzico 3DS, Webhook Signatures, State Machine | `ecommerce-payments-engine` |

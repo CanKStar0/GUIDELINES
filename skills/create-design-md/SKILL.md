@@ -1,61 +1,90 @@
 ---
 name: create-design-md
-description: "Design system architect for bootstrapping DESIGN.md specifications, 60-30-10 palettes, typography scales, elevation tiers, and UI design plans."
+description: "Design system architect, dual-context engine (PRODUCT.md + DESIGN.md), and 14 surgical design playbooks (distill, clarify, polish, typeset, harden, critique, etc.)."
 ---
 
-# Design System Architect & Audit Engine (`create-design-md`)
+# 🏛️ DESIGN SYSTEM ARCHITECT & SURGICAL DESIGN ENGINE (`create-design-md`)
 
-Generate, calibrate, and enforce a repository-level `DESIGN.md` specification. Establish an unambiguous visual and content contract so agents never hallucinate styles, introduce arbitrary colors, clutter screens with decorative badges/eyebrows, or alienate customers with dense technical jargon.
+Establishes, calibrates, and enforces a repository-level design contract. Prevents AI hallucinations, arbitrary styling, and generic slop through the **Dual-Context Protocol (`PRODUCT.md` + `DESIGN.md`)** and provides **14 surgical design playbooks** (`/distill`, `/clarify`, `/polish`, `/typeset`, `/harden`, etc.) for targeted, non-destructive UI refinement.
 
 ---
 
-## 🏛️ PART 1: THE DESIGN SYSTEM SPECIFICATION (`DESIGN.md`)
+# 📜 PART 1: THE DUAL-CONTEXT PROTOCOL
 
-When bootstrapping a new project or formalizing an existing project's visual identity, generate or update a root `DESIGN.md` conforming to this exact structure:
+AI models revert to statistical slop when they lack durable context. Before generating or refactoring any interface, two binding context files must govern decisions:
 
-### 1. Brand Identity & Design Direction
-- **Archetype & Tone:** Define the personality (e.g., "Dense High-Performance Developer Terminal", "Clean Scandinavian FinTech", "Warm Editorial Culinary Studio").
-- **Visual Thesis:** 1–2 sentences defining what the product looks like and what it **strictly avoids** (e.g., "Zero neon gradients, zero decorative badges, zero eyebrow crutches, plain human language").
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                        THE DUAL-CONTEXT SHIELD                         │
+├───────────────────────────────────┬────────────────────────────────────┤
+│          PRODUCT.md               │             DESIGN.md              │
+│       (The Human Why)             │        (The Structural How)        │
+├───────────────────────────────────┼────────────────────────────────────┤
+│ • Product thesis & target user    │ • 60-30-10 semantic token palette  │
+│ • Primary task of each view       │ • Modular typography scale         │
+│ • Brand archetype & emotional tone│ • Spacing, density & container grid│
+│ • Anti-Goals (What it must NEVER  │ • Elevation, radius & shadow tiers │
+│   look, sound, or behave like)    │ • Motion budgets & physics easing  │
+└───────────────────────────────────┴────────────────────────────────────┘
+```
 
-### 2. The 60-30-10 Color System
+---
+
+## 1. PRODUCT CONTEXT SPECIFICATION (`PRODUCT.md`)
+
+When bootstrapping or formalizing a project, generate or update a root `PRODUCT.md` containing:
+
+```markdown
+# Product Context: <Product Name>
+
+## 1. Purpose & Audience
+- **Target User:** Who specifically uses this interface (e.g., "Independent café owners during morning rush", "Senior DevOps engineers managing cluster alerts")?
+- **Core Problem:** What real-world friction does this tool eliminate?
+- **Primary View Action:** What is the single most important action on the main screen?
+
+## 2. Brand Archetype & Tone
+- **Archetype:** (e.g., "Dense High-Performance Terminal", "Warm Scandinavian Craft", "Calm Institutional FinTech")
+- **Voice:** Direct, human, outcome-focused, zero-pretension.
+
+## 3. Anti-Goals (Strict Prohibitions)
+Explicitly list what the product must NEVER look, sound, or feel like:
+- ❌ Must NEVER look like a generic crypto/web3 dashboard (zero neon cyan, zero dark glow).
+- ❌ Must NEVER use patronizing marketing jargon ("Supercharge", "Next-gen").
+- ❌ Must NEVER wrap every single element in nested bordered cards ("Cardocalypse").
+- ❌ Must NEVER use playful bouncy cartoon animations.
+```
+
+---
+
+## 2. DESIGN SYSTEM SPECIFICATION (`DESIGN.md`)
+
+Generate or update a root `DESIGN.md` conforming to this concrete contract:
+
+### 1. The 60-30-10 Color System
 Never pick random palette colors. Distribute visual weight strictly:
-- **60% Dominant (Base Surface & Canvas):** Canvas backgrounds, app shells, high-surface cards (`background`, `surface`, `surface-subtle`).
+- **60% Dominant (Base Surface & Canvas):** Canvas backgrounds, app shells, high-surface panels (`background`, `surface`, `surface-subtle`).
 - **30% Secondary (Structure & Typography):** Text hierarchy, borders, separators, secondary containers (`foreground`, `text-muted`, `border`, `surface-elevated`).
 - **10% Accent (Interactive Focus):** Primary buttons, active tabs, focus rings, status indicators (`primary`, `primary-hover`, `accent`).
 
-```css
-/* Semantic Token Palette (Tailwind CSS v4 @theme & CSS Variables) */
-:root {
-  --background: #ffffff;
-  --surface: #f8fafc;
-  --surface-elevated: #ffffff;
-  --border: #e2e8f0;
-  --foreground: #0f172a;
-  --text-muted: #64748b;
-  --primary: #0284c7;
-  --primary-foreground: #ffffff;
-  --destructive: #ef4444;
-  --warning: #f59e0b;
-  --success: #10b981;
-}
-
-@theme {
-  --color-background: var(--background);
-  --color-surface: var(--surface);
-  --color-surface-elevated: var(--surface-elevated);
-  --color-border: var(--border);
-  --color-foreground: var(--foreground);
-  --color-text-muted: var(--text-muted);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-destructive: var(--destructive);
-  --color-warning: var(--warning);
-  --color-success: var(--success);
-}
+```markdown
+## Semantic Token Palette
+- `background`: Canvas background (Light / Dark hex or OKLCH)
+- `surface`: Elevated cards and panels
+- `surface-subtle`: Secondary tinted surfaces
+- `surface-elevated`: Floating modals and popovers
+- `border`: Structural dividers and borders (subtle contrast)
+- `foreground`: Primary high-contrast body text
+- `text-muted`: Supporting metadata and secondary text
+- `primary`: Interactive brand accent (buttons, active states)
+- `primary-foreground`: Text rendered on top of primary accent
+- `destructive`: Error states, danger alerts, destructive actions
+- `warning`: Attention, pending, or cautionary alerts
+- `success`: Completed, verified, or positive status
+- `info`: Non-critical informational cues
 ```
 
-### 3. Typography Hierarchy & Copy Contract
-- **Primary Typeface:** Body copy and interface controls (e.g., Inter, Geist, SF Pro).
+### 2. Typography Hierarchy & Copy Contract
+- **Primary Typeface:** Body copy and interface controls (e.g., Geist, Inter, SF Pro, or custom brand font).
 - **Secondary Typeface (Optional):** Editorial display headings or monospace for code/metrics.
 - **Type Scale:**
   - Display (`text-4xl` / `text-5xl`): Tight leading (`leading-none`), tracking tight (`tracking-tight`), `text-balance`.
@@ -65,38 +94,145 @@ Never pick random palette colors. Distribute visual weight strictly:
   - Metadata / Caption (`text-xs`): `leading-normal`.
   - Tabular / Numeric (`tabular-nums`): Mandatory for metrics, prices, timestamps.
 
-#### 🚫 STRICT BANS: ZERO EYEBROWS & ZERO TECHNICAL JARGON
-- **SSOT Reference:** Inherits all hard rules from `bespoke-frontend-master` (Sections 4 & 5).
-- **Eyebrow Ban:** Zero uppercase tracked kicker tags (`FEATURES`, `PLATFORM`, `INNOVATION`) above titles. Headings must stand strong and clear independently.
-- **Plain Language Mandate:** Zero corporate buzzwords (`Next-gen`, `Cutting-edge`, `Robust`, `Synergy`, `End-to-end orchestration`). Plain human copy understandable in 2 seconds. Focus on concrete outcomes (time saved, money made, errors prevented).
+#### 🚫 Strict Anti-Slop Typography Laws:
+- **ZERO EYEBROWS & ZERO KICKERS:** Uppercase tracked kicker tags placed above headings (`FEATURES`, `OVERVIEW`, `WHY US`) are strictly prohibited.
+- **PLAIN HUMAN LANGUAGE:** Copy must explain real human outcomes in everyday words. Zero corporate buzzwords (`Next-gen`, `Cutting-edge`, `State-of-the-art`, `Robust`, `Turnkey`, `Synergy`).
 
-### 4. Sizing, Spacing & Density Tiers
+### 3. Sizing, Spacing & Density Tiers
 - **Base Grid:** Standard 4px / 8px scale (`4`, `8`, `12`, `16`, `24`, `32`, `48`, `64px`).
-- **Layout Max-Widths:** Container constraints (`max-w-7xl` for apps, `max-w-5xl` for marketing, `max-w-prose` for longform).
 - **Density Profile:**
   - *Compact / Dense:* Developer tools, data tables, monitoring dashboards (padding 6–8px).
   - *Standard:* Typical SaaS, management portals, e-commerce admin (padding 12–16px).
   - *Spacious:* Marketing landing pages, editorial showcases (padding 24–32px).
 
-### 5. Surfaces, Radius & Elevation
+### 4. Surfaces, Radius & Elevation
 - **Border Radius Scale:**
   - `radius-sm` (4px): Subtle control indicators, small inputs.
   - `radius-md` (6–8px): Form inputs, buttons, control triggers.
   - `radius-lg` (8–12px): Standard cards, content panels.
   - `radius-xl` (12–16px): Modals, dialogs, popovers.
   - `radius-full`: True circular buttons and avatar circles.
-  - *(Note: Decorative marketing badge pills and tag clouds are strictly banned; genuine operational/inventory status tags remain valid).*
 - **Elevation / Shadows:**
   - `shadow-none`: Flat cards, bordered containers.
   - `shadow-sm`: Subtle hover lifts.
   - `shadow-md`: Dropdown menus, tooltips.
   - `shadow-xl`: Modal overlays, floating drawer panels.
+  - **Rule:** Never combine a hairline 1px border with a wide 30px soft shadow simultaneously.
 
 ---
 
-## 🔍 PART 2: UI AUDIT & DESIGN PLAN ENGINE (`improve-ui`)
+# ⚡ PART 2: THE 14 SURGICAL DESIGN PLAYBOOKS
 
-Before refactoring, restyling, or updating any existing UI, do not dive into raw code editing. Execute this 4-step proof protocol:
+When modifying existing UI, never trigger a blind, chaotic redesign. Select and execute the exact surgical playbook required for the user's intent:
+
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                      14 SURGICAL DESIGN PLAYBOOKS                      │
+├────────────────────────────────────────────────────────────────────────┤
+│ 1. /distill   - Strip clutter, nested cards, and visual noise          │
+│ 2. /clarify   - Plain human copywriting, eliminate marketing buzzwords │
+│ 3. /polish    - Refine spacing, typography alignment, and token drifts │
+│ 4. /typeset   - Fix type scales, line lengths, and font pairings       │
+│ 5. /bolder    - Amplify confident hierarchy and contrast               │
+│ 6. /quieter   - Tone down overstimulating, neon, or noisy layouts      │
+│ 7. /harden    - Complete 5-state resilience (empty, error, loading)    │
+│ 8. /colorize  - Apply OKLCH scales, semantic tokens, and contrast      │
+│ 9. /layout    - Establish reading flow and asymmetric visual rhythm    │
+│ 10. /animate  - Purposeful physics-based micro-interactions (<= 200ms) │
+│ 11. /delight  - Memorable, tactile, brand-reinforcing micro-details    │
+│ 12. /critique - Design Director evaluation of cognitive load & purpose │
+│ 13. /audit    - Technical QA (WCAG 2.2 AA contrast, touch targets)     │
+│ 14. /shape    - Pre-code conceptual design framing                     │
+└────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### Playbook 1: `/distill` (Declutter & Simplify)
+**Trigger:** User asks to "simplify", "declutter", "clean up the noise", or when a page feels overwhelming.
+1. **Detect & Flatten Nested Cards:** Identify cards nested inside cards (`rule-nested-cards`). Remove the outer wrapper; use subtle dividers or pure whitespace instead.
+2. **Eliminate Status-Chip Soup:** Count badges and pills. If more than 2 items in a row have colored pills, replace them with plain typographic labels or subtle status dots.
+3. **Consolidate Redundant KPI Boxes:** Replace 4 equal-sized small metric boxes with 1 dominant primary KPI and inline secondary details.
+4. **Remove Purely Decorative Artifacts:** Delete decorative grid-lines, background orbs, and empty SVG doodles.
+5. **🛡️ Playbook Symbiosis Invariant (CRITICAL):** `/distill` strips away *decorative fat* only. It **must NEVER delete functional operational states** generated by `/harden` (e.g., empty state instructions, error boundary banners, retry triggers, pagination controls, or aria accessibility labels).
+
+---
+
+### Playbook 2: `/clarify` (Human Copywriting & UX Clarity)
+**Trigger:** User asks to "improve copy", "make headlines clearer", "fix messaging", or when text sounds like generic marketing slop.
+1. **Kill Corporate Buzzwords:** Audit text against `rule-marketing-buzzword`. Replace abstract claims with concrete human verbs.
+   - *Before:* "Supercharge your team's workflow with our next-gen orchestration engine."
+   - *After:* "Assign tasks, track deadlines, and review team progress in one view."
+2. **Contextualize Action Buttons:** Audit buttons against vague labels (`Submit`, `Continue`, `Go`). Replace with explicit outcomes (`Create Invoice`, `Send Invitation`, `Download PDF`).
+3. **Eliminate Redundant Field Explanations:** If a form label says "Email Address", remove the helper text below that says "Enter your email address here".
+4. **Friendly Error States:** Rewrite cryptic errors into actionable instructions.
+
+---
+
+### Playbook 3: `/polish` (Non-Destructive Craft Refinement)
+**Trigger:** User asks to "polish", "tighten up", "finalize", or "clean up the UI".
+1. **Preserve Structure:** Do NOT change the layout structure, brand colors, or functional behavior.
+2. **Snap Spacing to Scale:** Convert arbitrary values (`p-[13px]`, `gap-[7px]`) to the standard 4/8px spacing grid.
+3. **Check Optical Alignment:** Ensure icons and text baseline-align (`items-center`, `gap-2`). Ensure headings have more space above than below (`rule-heading-rhythm`).
+4. **Fix Border/Shadow Clashes:** Eliminate 1px borders combined with 30px blurry shadows.
+
+---
+
+### Playbook 4: `/typeset` (Typographic Rhythm & Contrast)
+**Trigger:** User asks to "fix typography", "improve readability", or when text looks flat and unformatted.
+1. **Enforce Modular Scale:** Guarantee visible optical distinction between Display, H1, H2, Body, and Caption.
+2. **Apply Mechanical Text Rules:**
+   - Headings: Add `text-balance` and `tracking-tight`.
+   - Paragraphs: Add `text-pretty`, `leading-relaxed`, and constrain width via `max-w-prose` (65–75 chars).
+   - Numerical data & tables: Add `tabular-nums`.
+3. **Eradicate Eyebrows:** Remove all uppercase kicker labels above headings.
+
+---
+
+### Playbook 5: `/bolder` & Playbook 6: `/quieter`
+**`/bolder`:**
+- When an interface feels timid, washed-out, or generic:
+- Elevate primary CTA contrast with strong semantic color.
+- Increase display heading weight and size (`text-3xl font-bold tracking-tight`).
+- Add authoritative dark/light contrast between canvas and cards.
+
+**`/quieter`:**
+- When an interface feels loud, overstimulating, or aggressive:
+- Strip away neon glow effects, pulsing dots, and competing accent colors.
+- Reduce high-contrast card borders to subtle tinted dividers.
+- Remove bouncy hover animations and simplify the palette to 60-30-10 distribution.
+
+**🛡️ Anti-Oscillation Guard:** Do not oscillate back and forth between extreme high-contrast and extreme washed-out neutrals. Always anchor adjustments to the documented 60-30-10 palette in `DESIGN.md`. If moving between louder and quieter, settle at the **30% structure / 10% accent** baseline.
+
+---
+
+### Playbook 7: `/harden` (5-State Resilience & Edge Cases)
+**Trigger:** User asks to "handle edge cases", "prepare for production", or when error/loading states are missing.
+1. **Loading State:** Build zero-CLS skeleton loaders matching exact layout geometries.
+2. **Empty State:** Provide helpful zero-state instructions with a clear primary action button.
+3. **Error State:** Wrap boundaries with descriptive error alerts and a retry trigger.
+4. **Overflow & Long Text:** Wrap long text in `truncate` or `line-clamp-2`; verify layout with 50-character strings.
+5. **Mobile Viewport Test:** Check `h-dvh` usage and safe-area padding (`pb-safe`).
+
+---
+
+### Playbook 8: `/critique` & Playbook 9: `/audit`
+**`/critique` (Design Director Review):**
+1. Evaluate primary visual focus: Does the eye immediately know where to look first?
+2. Evaluate cognitive load: Are there more than 7 distinct concepts competing for attention?
+3. Evaluate brand resonance: Does the design feel bespoke to the `PRODUCT.md` archetype?
+
+**`/audit` (Technical Quality Verification):**
+1. Verify WCAG 2.2 AA contrast ratios (4.5:1 text, 3:1 components).
+2. Verify touch target sizes (minimum 44x44px for touchable controls).
+3. Verify zero layout shift (CLS) during transitions.
+4. Verify keyboard accessibility (`Tab`, `Escape`, visible focus rings).
+
+---
+
+# 🔍 PART 3: UI REFURBISHMENT PROTOCOL (`improve-ui`)
+
+Before refactoring any existing UI, do not dive into raw code editing. Execute this 3-proof protocol:
 
 ### Step 1: Trace the Rendered Path
 1. Identify the exact route and layout file.
@@ -105,8 +241,8 @@ Before refactoring, restyling, or updating any existing UI, do not dive into raw
 
 ### Step 2: The 3-Proof Gate
 A visual finding is valid only if all three proofs exist:
-1. **Contract Proof:** Cite the specific line in `DESIGN.md` or global tokens that is violated (including eyebrow bans, decorative badge clutter, raw hex colors, or alienating buzzwords).
-2. **Runtime Proof:** Prove that the invalid property or text reaches the rendered DOM element.
+1. **Contract Proof:** Cite the specific clause in `PRODUCT.md`, `DESIGN.md`, or the 67-rule anti-slop catalog that is violated.
+2. **Runtime Proof:** Prove that the invalid property, nested card, or jargon reaches the rendered DOM.
 3. **Correction Proof:** Provide the exact replacement semantic token, primitive, plain copy, or layout fix.
 
 ### Step 3: Write Isolated Design Plan (`design-plans/<plan-name>.md`)
@@ -117,17 +253,18 @@ When proposing non-trivial UI improvements, record them in a structured plan:
 
 ## Evidence Chain
 - Surface: `<route or component path>`
-- Problem: <direct observation: eyebrow found, badge clutter, raw hex, or technical jargon>
-- Contract Violated: `<token, rule, or DESIGN.md clause>`
+- Playbook Selected: `<e.g. /distill, /clarify, /polish, /harden>`
+- Anti-Pattern Violations: `<e.g. rule-nested-cards, rule-marketing-buzzword>`
+- Contract Proof: `<clause in PRODUCT.md or DESIGN.md>`
 
 ## Proposed Changes
 1. `<file path>`:
-   - Replace: `<exact offending code or jargon copy>`
-   - With: `<concrete token, primitive, or plain customer copy>`
-   - Verification: `<expected visual/editorial result>`
+   - Replace: `<offending nested card, raw hex, or corporate jargon>`
+   - With: `<semantic token, clean typography, or plain outcome copy>`
+   - Verification: `<expected visual/audited result>`
 
 ## Scope Boundaries
-- Affected: `<consumers inheriting the change>`
+- Affected: `<components inheriting change>`
 - Excluded: `<unrelated components kept intact>`
 ```
 
@@ -135,9 +272,9 @@ When proposing non-trivial UI improvements, record them in a structured plan:
 
 ## ⚡ Execution Protocol
 
-1. If `DESIGN.md` does not exist in the project root:
+1. **If `PRODUCT.md` or `DESIGN.md` does not exist in the project root:**
    - Scan existing styling configurations: inspect Tailwind CSS v4 `@theme` in `globals.css` or Tailwind v3 `tailwind.config.*`, CSS root variables, and theme providers.
-   - Generate `DESIGN.md` in the project root capturing the real active tokens while enforcing the strict bans on badges, eyebrows, and technical jargon.
-2. If `DESIGN.md` exists:
-   - Treat it as the binding visual and copywriting law.
-   - Deny any UI change that contradicts `DESIGN.md`.
+   - Generate `PRODUCT.md` (defining user, task, anti-goals) and `DESIGN.md` (defining tokens, typography scale, radius tiers).
+2. **If `PRODUCT.md` and `DESIGN.md` exist:**
+   - Treat them as the binding visual and copywriting law of the repository.
+   - Deny any UI change that contradicts either contract.

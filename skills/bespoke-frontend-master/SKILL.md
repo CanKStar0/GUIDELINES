@@ -1,67 +1,187 @@
 ---
 name: bespoke-frontend-master
-description: "Project-first design constitution, semantic design tokens, anti-AI-slop rules, mechanical UI baseline, accessibility contracts, and 5-state UI modeling."
+description: "Project-first design constitution, 3-era AI slop eradication, 67-rule anti-pattern catalog, semantic design tokens, mechanical UI baseline, accessibility contracts, and 5-state UI modeling."
+---
+
+# 🏛️ BESPOKE FRONTEND MASTER — ANTI-SLOP CONSTITUTION & ENGINE
+
+Eliminates the statistical mediocrity of AI-generated user interfaces ("AI Slop"). Enforces a strict, project-first design constitution, a 67-rule anti-pattern catalog across all three eras of AI slop, semantic design tokens, mechanical CSS execution, WCAG 2.2 AA accessibility, and resilient 5-state UI modeling.
+
 ---
 
 # 0. PROJECT-FIRST DESIGN CONSTITUTION
 
-This skill must never impose its own visual preferences or arbitrary pre-packaged design styles onto any project.
+This skill must never impose its own visual preferences or arbitrary pre-packaged design templates onto any project.
 
-Labels such as "Modern UI", "SaaS UI", "Developer UI", or "Premium UI" can never justify visual decisions on their own.
+Labels such as "Modern UI", "SaaS UI", "Developer UI", or "Clean UI" can never justify visual decisions on their own.
 
 Before generating any code or UI, the existing repository must be thoroughly inspected.
 
-### Order of Precedence:
-1. Existing product requirements
-2. Existing design system / design tokens
-3. Existing brand identity
-4. Existing component patterns
-5. User workflow and information hierarchy
-6. Accessibility (WCAG 2.2 AA compliance)
-7. Responsive behavior & mobile viewports
-8. Visual decoration
+### Order of Precedence (Sovereignty Hierarchy & Escape Hatches):
+1. **Explicit User Direction (Inversion of Control):** If the user deliberately requests a specific aesthetic (e.g., "Build a retro 80s neon synthwave theme", "I want a technical CAD grid background"), the explicit user instruction **overrides** the anti-slop defaults. Never block conscious creative choices.
+2. **Existing Product Requirements & Brand Truth (`PRODUCT.md`):** Real corporate brand colors (e.g., Discord/Twitch purple, Spotify green, Linear dark aesthetic) are authentic brand identities, not AI slop.
+3. **Domain Whitelists (Functional Architecture):**
+   - **Breadcrumbs & Taxonomies:** Hierarchical paths (`DOCS / AUTH / API-KEYS` or `MEN / SHOES / RUNNING`) are essential navigation, NOT decorative kickers.
+   - **Kanban & Issue Categorization:** Left-border status coding on task cards (Bug = Red, Feature = Green, Task = Blue) is industry-standard data encoding, NOT decorative side-tab slop.
+   - **Canvas & Node Graphs:** Grid-line backgrounds on interactive canvases (React Flow, Figma/CAD tools, diagram editors) are functional measurement grids, NOT decorative background slop.
+   - **B2B & High-Density Operational Screens:** Compact padding (4–8px), dense multi-row data tables, and grouped operational monitors are functional requirements for professionals, NOT "cramped layout" violations.
+   - **Performance & Offline Typography:** When zero-latency, offline availability, or system-native neutrality is required, Inter, Geist, or SF Pro are pragmatic engineering choices, NOT slop.
+4. **Existing Design System & Tokens (`DESIGN.md`):** Component tokens and established conventions.
+5. **Anti-Slop 67-Rule Defense Baseline:** Protects against thoughtless, uncalibrated AI reflexes when no explicit brand or user constraint exists.
 
-**Decoration must never precede architecture.**
+**Architecture must always precede decoration. Decoration must never obscure content.**
 
-## Existing System First
-
+### Existing System First:
 Inspect and identify the existing system in the project before generating any new patterns:
-- Colors
-- Typography
-- Spacing
-- Border radius
-- Shadows & elevation
-- Containers & layout grids
-- Icons
-- Existing components
-- Form patterns
-- Table patterns
-- Navigation patterns
+- Colors & Theme tokens
+- Typography & Font pairings
+- Spacing & Grid scale
+- Border radius tiers
+- Shadows & Elevation
+- Containers & Max-widths
+- Iconography
+- Component primitives (Radix, Base UI, React Aria, etc.)
+- Form & Table patterns
 
-- **If the existing system is consistent and functional:** Preserve it.
-- **If the existing system is fragmented or inconsistent:** Standardize it first.
-- **Do not rebrand or restyle the project** simply because this skill mentions different values or examples.
+- **If the existing system is consistent:** Preserve it with zero drift.
+- **If the existing system is fragmented:** Standardize it using semantic tokens first.
+- **Do not rebrand or restyle the project** simply because of personal aesthetic bias.
 
 ---
 
-# 1. GLOBAL DESIGN TOKENS — HARD REQUIREMENT
+# 1. THE 3 ERAS OF AI SLOP — DETECTION & IMMUNITY MATRIX
+
+AI coding assistants default to predictable, clichéd aesthetics because training data centers on average, over-represented patterns. Every generated surface must be immune to all three historical eras of AI slop:
+
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                        AI SLOP ERADICATION MATRIX                      │
+├───────────────────┬──────────────────────────┬─────────────────────────┤
+│ 2022-2023 DÖNEMİ  │     2024-2025 DÖNEMİ     │    2025-2026 DÖNEMİ     │
+│ (Cyber / Neon)    │    (Beige Editorial)     │   (GPT Neobrutalism)    │
+├───────────────────┼──────────────────────────┼─────────────────────────┤
+│ • Purple/Cyan neon│ • Washed-out warm beige  │ • 2-3px pitch-black     │
+│   gradients       │   backgrounds (#f5efe2)  │   borders (border-black)│
+│ • Süs niyetine    │ • Italic serifs inserted │ • Zero-blur hard offset │
+│   glassmorphism   │   inside sans headlines  │   shadows (4px 4px 0 #0)│
+│   (backdrop-blur) │ • Uppercase kicker tags  │ • Arbitrary pastel      │
+│ • Floating glowing│   above every heading    │   sticker tags & badges │
+│   radial orbs     │ • Decorative side-tabs on│ • "Cardocalypse": 4     │
+│ • Forced dark mode│   cards (border-l-4)     │   layers of cards in    │
+│   with glowing    │ • "Status-chip soup":    │   cards, zero breath    │
+│   borders/buttons │   colored pill on all    │ • 44px blob-like extreme│
+│                   │ • Redundant, patronizing │   border-radii on cards │
+│                   │   marketing copywriting  │ • Crude hand-coded SVGs │
+└───────────────────┴──────────────────────────┴─────────────────────────┘
+```
+
+---
+
+# 2. THE 67-RULE ANTI-PATTERN CATALOG (IMPECCABLE STANDARD)
+
+Every line of code and rendered surface must pass these 67 deterministic checks:
+
+### A. Visual Details (8 Rules)
+1. `rule-codex-grid-background`: **BANNED.** Decorative grid-line backgrounds (`linear-gradient(...)` squares) are prohibited unless building an actual CAD canvas, graph editor, or map.
+2. `rule-border-accent-on-rounded`: **BANNED.** Thick colored borders (2px-3px accent) on rounded cards (`rounded-2xl`) compete with content. Use subtle borders (`border-border/60`) or surface tinting.
+3. `rule-glassmorphism`: **BANNED.** Decorative `backdrop-blur` and semi-transparent frosted cards without a functional layering/z-index need are forbidden.
+4. `rule-side-tab`: **BANNED.** Decorative vertical stripe borders on one side of a card (`border-l-4 border-l-primary`) are strictly reserved for genuine Alert/Warning states. Never use on ordinary cards.
+5. `rule-gpt-thin-border-wide-shadow`: **BANNED.** 1px hairline border + 24px-32px wide soft drop shadow used simultaneously is prohibited. Choose **either** a clean border **or** a subtle shadow.
+6. `rule-repeating-stripes-gradient`: **BANNED.** 45-degree repeating gradient stripes used to fill empty space are forbidden. Use intentional whitespace.
+7. `rule-over-round`: **BANNED.** Extreme border-radii (32px–44px) that warp cards into shapeless blobs are prohibited. Follow established radius tiers.
+8. `rule-sketchy-svg`: **BANNED.** Crude, hand-coded wavy vector mascots or placeholder doodles are prohibited. Use high-fidelity assets or clean typography.
+
+### B. Typography (11 Rules)
+9. `rule-kicker-above-heading`: **STRICTLY PROHIBITED.** Uppercase, tracked-out label tags placed above headings (`FEATURES`, `OVERVIEW`, `WHY US`) are banned. Headings must stand strong on their own.
+10. `rule-undersized-ui-text`: **BANNED.** Interactive controls, buttons, and navigation text smaller than 12px (e.g., `text-[9px]`, `text-[10px]`) are prohibited.
+11. `rule-flat-type-hierarchy`: **BANNED.** Headings, subheadings, and body text rendered at near-identical sizes and weights (e.g., H2 at 17px, body at 15px) are prohibited. Establish clear optical scale.
+12. `rule-icon-tile-stack`: **BANNED.** A rounded squircle with a colorful icon stacked directly above every feature heading is prohibited. Integrate icons inline with headings or let copy lead.
+13. `rule-italic-serif-display`: **BANNED.** Randomly inserting an italic serif word inside a modern sans-serif headline (`Build the <em>future</em> today`) is prohibited.
+14. `rule-hero-eyebrow-chip`: **BANNED.** Floating pill badges above the main hero headline (`✨ Introducing v2.0 →`) are prohibited. State value directly in the headline.
+15. `rule-oversized-h1`: **BANNED.** Runaway 72px–96px headlines that swallow the entire viewport and push value propositions below the fold are prohibited.
+16. `rule-extreme-negative-tracking`: **BANNED.** Crushed letter-spacing (`tracking-[-0.08em]` or tighter) that collides character glyphs is forbidden.
+17. `rule-overused-font`: **BANNED.** Defaulting to Inter or Geist without evaluating brand identity is discouraged. Choose typography intentional for the domain.
+18. `rule-all-caps-body`: **BANNED.** Uppercase styling on multi-line body paragraphs is prohibited. Use sentence case.
+19. `rule-single-font`: **BANNED.** Monolithic single-weight typography without optical rhythm or contrast is prohibited.
+
+### C. Color & Contrast (7 Rules)
+20. `rule-radial-halo`: **BANNED.** Ambient glowing radial gradient orbs behind dark surfaces are prohibited.
+21. `rule-radial-spotlight-glow`: **BANNED.** Soft spotlights placed behind text sections to simulate depth are prohibited.
+22. `rule-ai-color-palette`: **BANNED.** Default purple-to-blue gradients, neon violet, and electric cyan are strictly forbidden.
+23. `rule-dark-glow`: **BANNED.** Neon glowing borders and buttons in dark mode (`shadow-[0_0_20px_theme(colors.cyan.500)]`) are prohibited.
+24. `rule-gradient-text`: **BANNED.** Multi-color gradients applied to text (`bg-clip-text text-transparent`) are prohibited. Use high-contrast solid colors.
+25. `rule-gray-on-color`: **BANNED.** Muted neutral gray text rendered over colored saturated backgrounds is prohibited (fails contrast).
+26. `rule-cream-palette`: **BANNED.** Defaulting to warm washed-out beige/cream (`#f5efe2`) as a lazy substitute for a real color system is prohibited.
+
+### D. Layout & Space (12 Rules)
+27. `rule-nested-cards` (**CARDOCALYPSE BAN**): **STRICTLY PROHIBITED.** Wrapping every element in a card, and nesting cards inside cards (3–4 layers of borders and shadows) is forbidden. Use whitespace, dividers, and typography to structure hierarchy.
+28. `rule-identical-card-grids`: **BANNED.** Copy-paste 3x3 identical card grids (icon + heading + 2-line text) are prohibited. Use varied, content-informed layouts (Bento, master-detail, asymmetric rhythm).
+29. `rule-monotonous-spacing`: **BANNED.** Equal gaps everywhere (e.g., `gap-4` between everything regardless of relationship). Related items must be close (4–8px); distinct groups must be separated (24–32px).
+30. `rule-numbered-section-labels`: **BANNED.** Placing `01`, `02`, `03` numbers beside headings when there is no sequential workflow is prohibited.
+31. `rule-hero-metric-layout`: **BANNED.** Generic 3-card metric bars (`10M+ Users`, `99.9% Uptime`, `200ms Latency`) slapped under heros are prohibited.
+32. `rule-line-length`: **BANNED.** Running body text lines exceeding 75–80 characters across wide screens are prohibited. Constrain via `max-w-prose` (65–75 chars).
+33. `rule-heading-rhythm`: **BANNED.** Headings positioned closer to the preceding section than their own content are prohibited. Space above a heading must always exceed space below.
+34. `rule-cramped-padding`: **BANNED.** Buttons or cards with cramped, suffocated padding (e.g., `py-0.5 px-2`).
+35. `rule-body-text-viewport-edge`: **BANNED.** Text running flush against mobile viewport edges without gutter padding.
+36. `rule-text-overflow`: **BANNED.** Single-line text overflowing containers or causing horizontal window scrolling.
+37. `rule-clipped-overflow-container`: **BANNED.** Dropdowns, tooltips, or popovers getting clipped by parent containers with `overflow-hidden`.
+38. `rule-edge-flush-cards`: **BANNED.** Cards touching horizontal carousel scroll edges without boundary padding.
+
+### E. Motion (6 Rules)
+39. `rule-pulsing-dot`: **BANNED.** Status dots pulsing continuously on static, unchanged states are prohibited. Motion is reserved for active live changes.
+40. `rule-blinking-cursor`: **BANNED.** Blinking terminal cursors in static marketing copy are prohibited.
+41. `rule-marquee`: **BANNED.** Auto-scrolling logo marquees that force users to wait or read at the machine's pace are prohibited unless pause controls exist.
+42. `rule-bounce-easing`: **BANNED.** Bouncy, elastic, overshoot springs on dialogs, modals, and buttons are prohibited. Use crisp ease-out transitions.
+43. `rule-layout-transition`: **BANNED.** Animating layout-triggering properties (`width`, `height`, `margin`, `padding`). Animate exclusively via `transform` and `opacity`.
+44. `rule-image-hover-transform`: **BANNED.** Defaulting to 105% zoom or rotation on every image hover is prohibited.
+
+### F. UX Writing & Copy (5 Rules)
+45. `rule-marketing-buzzword`: **STRICTLY PROHIBITED.** Banned buzzwords: `Supercharge`, `Next-gen`, `Cutting-edge`, `State-of-the-art`, `Robust`, `Turnkey`, `End-to-end orchestration`, `Synergy`, `Paradigm shift`, `Holistic`, `Seamless integration`, `Hyper-scalable`, `Disruptive`, `Leverage`, `World-class`.
+46. `rule-aphoristic-cadence`: **BANNED.** Slogan-like forced contrasts: *"Not a feature. A platform."*, *"Less noise. More signal."*
+47. `rule-repeated-container-text`: **BANNED.** Repeating the exact same word in multiple slots of one card (e.g., Badge: "Ready", Title: "Ready", Button: "Ready").
+48. `rule-em-dash-overuse`: **BANNED.** Inserting em-dashes (`—`) in every sentence as an AI writing tic.
+49. `rule-theater-slop-phrase`: **BANNED.** Pretentious dismissals like *"We killed the growth theater."*
+
+### G. Imagery (4 Rules)
+50. `rule-shape-assembled-illustration`: **BANNED.** Meaningless arrangements of geometric shapes (rectangles, circles) posing as art.
+51. `rule-organic-clip-path`: **BANNED.** Jagged, jagged-polygon clip paths trying to simulate torn paper or organic edges.
+52. `rule-buried-raster`: **BANNED.** Images covered by 90%+ opaque color overlays that render the image invisible.
+53. `rule-broken-image`: **BANNED.** Missing, empty, or unhandled image source paths.
+
+### H. General Quality (10 Rules)
+54. `rule-script-error`: Zero uncaught runtime JavaScript/TypeScript exceptions.
+55. `rule-content-hidden-at-rest`: Content stuck at `opacity: 0` because an entrance animation failed to trigger is prohibited. Content must be visible by default.
+56. `rule-justified-text`: Two-sided justified text (`text-justify`) on web is prohibited (causes whitespace rivers).
+57. `rule-low-contrast`: All text must achieve WCAG 2.2 AA (4.5:1 normal, 3:1 large).
+58. `rule-skipped-heading`: Skipping heading levels (H1 to H3) is prohibited.
+59. `rule-tight-leading`: Body text leading less than 1.4 is prohibited.
+60. `rule-tiny-text`: Body text under 14px is prohibited.
+61. `rule-wide-tracking`: Letter spacing wider than `0.05em` on multi-line body text is prohibited.
+62. `rule-fake-social-proof`: Banned avatar clusters with fake 5-star ratings (`[M][S][K][B] ★★★★★ 4.9/5`).
+63. `rule-fake-telemetry`: Banned invented latency, uptime, and SLA statistics.
+
+### I. Design System Fidelity (4 Rules)
+64. `rule-design-system-font`: No fonts outside `DESIGN.md`.
+65. `rule-design-system-color`: No colors outside semantic tokens in `DESIGN.md`.
+66. `rule-design-system-radius`: No border radii outside the scale in `DESIGN.md`.
+67. `rule-design-system-font-size`: No type sizes outside the scale in `DESIGN.md`.
+
+---
+
+# 3. GLOBAL DESIGN TOKENS — HARD REQUIREMENT
 
 Never permit the repetition of raw, physical design values inside component or page templates.
 
 **Hard-coded values in colors are STRICTLY PROHIBITED.**
 
-Never produce the following within component or page files:
+Never produce within component or page files:
 - Raw hex colors (`#ffffff`, `#0f1013`)
-- `rgb(...)`
-- `rgba(...)`
-- `hsl(...)`
+- `rgb(...)`, `rgba(...)`, `hsl(...)`
 - Arbitrary Tailwind color utilities such as `bg-[#...]`, `text-[#...]`, `border-[#...]`
-- Random framework palette utilities (e.g., `bg-purple-600`, `text-slate-400` scattered across components)
+- Random framework palette utilities (`bg-purple-600`, `text-slate-400` scattered across files)
 - One-off shadow color definitions
 
-Actual physical color values must exist solely within the global theme / token configuration layer.
-
-Components must consume **semantic tokens exclusively**.
+Actual physical color values must exist solely within the global theme / token configuration layer (`globals.css` with `@theme` or Tailwind config).
 
 ### ❌ WRONG (Physical & Arbitrary Values):
 ```tsx
@@ -73,41 +193,29 @@ Components must consume **semantic tokens exclusively**.
 <div className="bg-surface text-muted border border-border">
 ```
 
-Create token names based on **purpose and semantic role**, never by visual color:
-- `background`
-- `foreground`
-- `surface`
-- `surface-subtle`
-- `surface-elevated`
-- `border`
-- `border-subtle`
-- `text-primary`
-- `text-secondary`
-- `text-muted`
-- `primary`
-- `primary-hover`
-- `primary-foreground`
-- `success`
-- `warning`
-- `danger` (or `destructive`)
-- `info`
-
-Domain-specific semantic tokens may be defined when required (e.g., for a developer tool):
-- `terminal-background`
-- `terminal-foreground`
-- `terminal-prompt`
-- `code-background`
-- `http-get`
-- `http-post`
-- `http-delete`
-
-Components must not be aware of physical light/dark color mappings. Light and dark theme resolutions must occur entirely at the global theme layer.
+### Mandatory Semantic Roles:
+- `background`: Canvas background
+- `foreground`: Primary high-contrast text
+- `surface`: Standard cards and surface panels
+- `surface-subtle`: Subtle background contrast
+- `surface-elevated`: Floating modals, popovers, menus
+- `border`: Structural dividers and borders
+- `border-subtle`: Secondary faint boundaries
+- `text-primary`: Primary body and heading text
+- `text-muted`: Secondary metadata and captions
+- `primary`: Interactive brand accent (buttons, active states)
+- `primary-hover`: Hover state for primary actions
+- `primary-foreground`: Text rendered on primary accent
+- `destructive` / `danger`: Error states, danger alerts, destructive triggers
+- `warning`: Attention, pending, cautionary states
+- `success`: Completed, verified, positive states
+- `info`: Non-critical informational cues
 
 ---
 
-# 2. MECHANICAL CODE STANDARDS (BASELINE UI RULES)
+# 4. MECHANICAL CODE STANDARDS (BASELINE UI RULES)
 
-To eliminate sloppy AI output and substandard CSS execution, every component must strictly conform to these mechanical rules:
+To guarantee flawless execution, every component must strictly conform to these mechanical rules:
 
 ### A. Viewports & Safe Areas
 - **Use `h-dvh` instead of `h-screen` or `100vh`:** Standard `100vh` breaks on mobile Safari/Chrome due to dynamic address bars. Always use dynamic viewport height (`h-dvh`, `min-h-dvh`).
@@ -121,7 +229,8 @@ To eliminate sloppy AI output and substandard CSS execution, every component mus
 
 ### C. Sizing & Spacing Mechanics
 - **Square Elements:** Use `size-*` as modern baseline (e.g., `size-4`, `size-8`, `size-10`).
-- **Tailwind Version Awareness:** In Tailwind CSS v4, define semantic tokens directly in CSS using `@theme { --color-surface: var(--surface); }` within your global CSS. In Tailwind v3, configure tokens in `tailwind.config.*`. Never generate obsolete `tailwind.config.js` or `postcss.config.js` files in a Tailwind v4 environment.
+- **Standard Scale:** Stick to the standardized spacing scale (`4`, `8`, `12`, `16`, `24`, `32px`). Never use arbitrary pixel classes like `p-[13px]` or `gap-[7px]`.
+- **Tailwind Version Awareness:** In Tailwind CSS v4, define tokens in CSS via `@theme` directives; in Tailwind v3, define tokens in `tailwind.config.*`. Never inject obsolete v3 config files into v4 setups.
 
 ### D. Component Primitives First
 - **No Div-Buttons:** Never use `<div onClick={...}>` or `<span onClick={...}>` as interactive triggers. Use native `<button>` or accessible unstyled primitives (`Base UI`, `Radix UI`, `React Aria`).
@@ -129,244 +238,39 @@ To eliminate sloppy AI output and substandard CSS execution, every component mus
 
 ---
 
-# 3. ANTI-AI-SLOP — HARD RULES
+# 5. ACCESSIBILITY CONTRACTS (WCAG 2.2 AA)
 
-The following patterns are **STRICTLY PROHIBITED as default solutions**:
-- Purple / blue / cyan neon gradients
-- Purely decorative gradients
-- Gratuitous glassmorphism
-- Decorative backdrop blur
-- Glowing background blobs
-- Glow effects on standard buttons or cards
-- Wrapping every individual section inside a bordered card
-- Nested cards inside cards
-- Forcing 16–24px radius uniformly everywhere
-- Drop shadows applied to every surface
-- Colored rounded icon containers everywhere
-- Forcing an icon onto every single button
-- Emoji-based UI styling
-- Center-aligning everything by default
-- Excessive, vacuous whitespace
-- Fake social proof (e.g., generic avatar clusters `[M][S][K][B] ★★★★★ 4.9/5`)
-- Benefit pill clusters under CTAs (`[⚡ 3 mins] [🛡️ Free]`)
-- KPI metric cards by default
-- Defaulting any dashboard to: KPI cards + Line Chart + Recent Activity list
-- Bento grids by default
-- Fake metrics, fake latency, fake uptime, fake revenue charts
-
-Any of these patterns may only be used if there is an **explicit product or brand requirement**.  
-*"Looking modern"* is never a valid architectural justification.
+1. **Accessible Names:** Every interactive control must have an accessible name. Icon-only buttons **must** have `aria-label` or `aria-labelledby`. Decorative icons **must** have `aria-hidden="true"`.
+2. **Keyboard Navigation & Visible Focus:** All interactive elements must be reachable via `Tab`. Never remove focus rings without providing an intentional, high-contrast replacement (`focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2`).
+3. **Modal Focus Traps:** `Escape` must dismiss modals, dropdowns, and overlays. Dialogs must trap focus while open and restore focus to the trigger upon closure.
+4. **Forms & Validation:** Every input must have an associated `<label>`. Errors must link via `aria-describedby`. Invalid fields must set `aria-invalid="true"`.
+5. **Touch Targets:** Minimum 44x44px for mobile devices (`min-h-11 min-w-11`), minimum 24x24px for compact desktop controls.
 
 ---
 
-# 4. HARD BAN: ZERO EYEBROWS & ZERO DECORATIVE BADGES
+# 6. RESILIENT 5-STATE UI MODELING
 
-The predictable AI template of sticking an "eyebrow" label or a colorful badge above every title is **STRICTLY FORBIDDEN**.
+Never ship a component that only handles the ideal "happy path". Every data-backed UI surface must explicitly implement:
 
-### A. Eyebrow Ban (Strict Prohibition)
-- **Never produce eyebrow text above headings.**
-- Strictly prohibited:
-  - Small uppercase kicker labels (e.g., `PLATFORM`, `FEATURES`, `WHY CHOOSE US`, `INNOVATION`, `OVERVIEW`, `ABOUT US`, `TESTIMONIALS`).
-  - Small pill tags placed above a hero title (e.g., `🚀 v2.0 is live →`, `NEW FEATURE`).
-- **Rule:** Headings must be self-explanatory, powerful, and direct. If a heading requires an eyebrow label to explain what the section is about, rewrite the heading.
-
-### B. Decorative Badge & Pill Tag Ban (Strict Prohibition)
-- **Do not slap decorative badges, tags, or pills onto marketing and interface pages.**
-- Strictly prohibited:
-  - Floating badges highlighting generic features (`⚡ Ultra Fast`, `🔒 Bank Grade`, `✨ AI Powered`).
-  - Pill tags clustered under primary CTA buttons (`[No credit card required]`, `[Cancel anytime]`).
-  - Decorative tag pills stamped onto cards or section corners.
-- **The Only Permitted Exception (Genuine Operational & Commercial States):**
-  - Badges are strictly banned for decoration or marketing posturing.
-  - Subtle status indicators are permitted **ONLY for genuine real-time transactional, inventory, or operational states**:
-    - Operational: Server status (`Online` / `Degraded`), Order state (`Paid` / `Processing` / `Shipped`).
-    - Commercial/E-Commerce: Inventory availability (`In Stock` / `Sold Out`), active discount tags (`-20%`).
-  - Prefer clean typographic labels with status dots or subtle border pills over loud, rounded bubbly gradients.
+1. **Default / Populated:** Standard operational state with clean typographic hierarchy.
+2. **Loading / Pending:** Skeleton screens matching exact rendered geometry to eliminate layout shift (CLS).
+3. **Empty / Zero-State:** Helpful, single-line guide with direct action trigger (avoid giant cartoon illustrations for simple tables).
+4. **Error / Failed:** Human-readable explanation with explicit retry trigger (`onClick={refetch}`).
+5. **Partial / Overflow:** Long text truncated gracefully (`truncate` / `line-clamp-2`), numerical figures formatted via `tabular-nums`.
 
 ---
 
-# 5. HARD BAN: ZERO TECHNICAL JARGON & ALIENATING BUZZWORDS
+# 7. THE MASTER ANTI-SLOP AUDIT GATE
 
-Marketing and product copy must be written for **real human customers**, not developers or corporate pitch decks. Using pretentious technical jargon that confuses customers is **STRICTLY FORBIDDEN**.
-
-### A. Prohibited Buzzwords & Jargon (Blacklist)
-Never use the following abstract, alienating corporate terms in customer-facing UI:
-- `Next-gen` / `Next-generation`
-- `Cutting-edge`
-- `State-of-the-art`
-- `Robust` / `Robustness`
-- `Hyper-scalable` / `Scalable ecosystem`
-- `Turnkey solution`
-- `End-to-end orchestration`
-- `Synergy` / `Synergistic`
-- `Paradigm shift`
-- `Holistic approach`
-- `Seamless integration` / `Seamlessly`
-- `Enterprise-grade` (unless selling an actual SOC2/SAML plan)
-- `Disruptive` / `Frictionless`
-- `Leverage` / `Leveraging capabilities`
-- `Cloud-native architecture` (in customer-facing copy)
-- `AI-driven` / `AI-powered` (as a lazy placeholder without explaining concrete benefit)
-
-### B. The Plain Human Language Mandate
-- **Rule of Clarity:** If an everyday customer or small business owner cannot understand the headline in **2 seconds**, it is rejected.
-- **Explain What It Does in Plain Words:**
-  - ❌ *Wrong:* "Leverage our cutting-edge end-to-end orchestration to maximize operational synergies."
-  - ✅ *Correct:* "Take orders, track kitchen tickets, and see your daily sales in one simple screen."
-  - ❌ *Wrong:* "Next-gen AI-driven customer intelligence architecture."
-  - ✅ *Correct:* "See what your customers order most often so you know what to restock."
-- **Focus on Tangible Customer Outcomes:**
-  - Save time (hours per week).
-  - Prevent errors (never miss an order).
-  - Make more profit (clear cash flow).
-  - Zero technical posturing. Speak like a helpful, grounded human expert.
-
----
-
-# 6. ACCESSIBILITY CONTRACTS (WCAG 2.2 AA)
-
-Accessibility is non-negotiable and must be built directly into the DOM structure:
-
-### Priority Rules:
-1. **Accessible Names:**
-   - Every interactive control must have an accessible name.
-   - Icon-only buttons **must** have `aria-label` or `aria-labelledby`.
-   - Decorative SVGs and icons **must** have `aria-hidden="true"`.
-2. **Keyboard Navigation & Visible Focus:**
-   - All interactive elements must be reachable via `Tab`.
-   - Never remove focus rings without providing an intentional, high-contrast replacement (`focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2`).
-   - Focus must not be obscured by sticky headers or footers (WCAG 2.2 Criterion 2.4.11).
-   - `Escape` must dismiss modals, dropdowns, and overlays.
-   - Dialogs/modals must trap focus while open and restore focus to the triggering element upon closure.
-3. **Forms & Validation:**
-   - Every `<input>`, `<select>`, and `<textarea>` must have an associated `<label>`.
-   - Input errors must be explicitly linked using `aria-describedby="field-error-id"`.
-   - Invalid fields must programmatically set `aria-invalid="true"`.
-4. **Color Contrast:**
-   - Maintain minimum 4.5:1 contrast for regular text and 3:1 for large text / graphical UI components.
-5. **Target Sizes (WCAG 2.2 Criterion 2.5.8):**
-   - Interactive touch targets must meet minimum 44x44px for mobile devices (`min-h-11 min-w-11`) and minimum 24x24px for desktop compact controls.
-
----
-
-# 7. MOTION PERFORMANCE HARD RULES (ANTI-JANK)
-
-Stuttering or sluggish animations degrade perceived product quality:
-
-### Priority Rules:
-1. **Compositor Properties Only:**
-   - Animate exclusively via `transform` and `opacity`.
-   - **Never animate layout properties** (`width`, `height`, `top`, `left`, `margin`, `padding`) continuously on large surfaces.
-2. **Scroll-Driven Motion:**
-   - Never drive animations by attaching raw listeners to `window.addEventListener('scroll')` or reading `scrollY` in loops.
-   - Use CSS `animation-timeline: view()` or `IntersectionObserver` with visibility thresholds.
-   - Pause or stop animations when elements are scrolled out of viewport.
-3. **Micro-Interaction Budget:**
-   - Standard UI state transitions (hover, active, expand) must not exceed **200ms**.
-   - Do not use `transition-all`. Specify exact changing properties: `transition-colors`, `transition-opacity`, `transition-transform`.
-4. **Blur Restrictions:**
-   - Blur animations must be <= 8px.
-   - Never animate blur continuously or over large layout surfaces.
-5. **Reduced Motion:**
-   - Always honor user system preferences via `prefers-reduced-motion`:
-   ```css
-   @media (prefers-reduced-motion: reduce) {
-     *, ::before, ::after {
-       animation-duration: 0.01ms !important;
-       transition-duration: 0.01ms !important;
-     }
-   }
-   ```
-
----
-
-# 8. LAYOUT ARCHITECTURE & DENSITY
-
-### No Default Bento
-Select layouts based on **content relationships and user workflows**:
-- **Comparable structured data:** Table
-- **Browsable records:** List or grid, depending on scanning density requirements
-- **System configuration:** Grouped settings with clear hierarchy
-- **Sequential workflows:** Stepped wizard or structured form
-- **Operational monitoring:** Dense operational layout
-- **Independent showcase items:** Cards or grid, when contextually appropriate
-
-### Card Rule
-A card is an organizational boundary, not a decorative stamp.  
-For section grouping, evaluate lighter separators first:
-- Whitespace
-- Typographic hierarchy
-- Subtle horizontal dividers
-- Clean 1px borders
-- Subtle surface contrast
-
-### Radius Baselines
-- **Small (indicators, subtle controls):** 4px
-- **Controls (inputs, buttons):** 6–8px
-- **Surfaces (cards, panels):** 8–12px
-- **Major Overlays (modals, dialogs):** 12–16px
-- **Full:** Reserved strictly for true round buttons and avatar circles  
-*0px sharp corners are completely valid for dense developer/terminal tools.*
-
-### Shadows
-Shadows must be reserved for **real physical layering** (modals, popovers, tooltips, dropdown menus). Never apply default heavy drop shadows to standard flat cards.
-
----
-
-# 9. REAL DATA ONLY
-
-Never invent numbers, metrics, or telemetry that simulate operational credibility:
-- Latency (e.g., "12ms")
-- Uptime (e.g., "99.99%")
-- SLA guarantees
-- Revenue figures
-- Conversion percentages
-- Active user counts
-- FPS benchmarks
-
-Fake telemetry is classified as AI-slop. If test fixtures are required, structure them explicitly as mock test data (`fixtures/mockData.ts`).
-
----
-
-# 10. CONTEXTUAL STATE MODELING
- 
-Implement only semantically applicable states for each specific component:
-- **Default**
-- **Loading / Pending** (Only use skeletons if they prevent layout shift and wait time warrants it)
-- **Empty** (Single-line clean text preferred; avoid huge icon + CTA banners for simple lists)
-- **Error** (Descriptive, actionable error messages with retry triggers)
-- **Optimistic** (Leverage React 19 `useOptimistic` or action states when mutation outcome is predictable with verified rollback)
-
----
-
-# 11. FRAMEWORK VERSION SAFETY & MODERN RUNTIMES
-
-Never trigger automatic breaking migrations to newer framework versions.
-- Inspect `package.json` and lockfiles first.
-- **Next.js 15+ App Router:**
-  - Route params and searchParams are asynchronous: Always `const { id } = await params;`.
-  - Fetch requests default to `no-store` (uncached): specify `{ next: { revalidate: ... } }` or `{ cache: "force-cache" }` when caching is intentionally required.
-- **React 19:**
-  - Use `useActionState` (replacing deprecated `useFormState`) for server action forms and pending transitions.
-- Upgrades must only occur upon explicit user request.
-
----
-
-# 12. THE BESPOKE AUDIT GATE
-
-Before declaring any UI task complete, conduct this 12-point audit:
-
-1. **Are there ZERO eyebrow labels above any headings? (Strictly no kicker tags)**
-2. **Are there ZERO decorative badges or pill tags cluttering the interface?**
-3. **Is the copy 100% free of technical jargon, corporate buzzwords, and developer posturing?**
-4. **Can a non-technical customer understand the headlines and value propositions in 2 seconds?**
-5. **Are headings using `text-balance` and multiline copy using `text-pretty`?**
-6. **Are all numbers, metrics, and tabular data using `tabular-nums`?**
-7. **Is viewport height handled via `h-dvh` with mobile safe-area protection (`pb-safe`)?**
-8. **Are interactive elements native buttons or accessible primitives (zero unaccessible divs)?**
-9. **Do icon-only buttons have `aria-label`, and decorative icons `aria-hidden="true"`?**
-10. **Are animations compositor-only (`transform`/`opacity`) with <= 200ms duration?**
-11. **Are all colors, borders, and surfaces resolving to global semantic tokens (zero raw hex)?**
-12. **Is the UI free of fake metrics, fake reviews, avatar clusters, and neon gradients?**
-
-> *If any check fails, resolve it before presenting the deliverable to the user.*
+Before declaring any UI deliverable complete, audit against this checklist:
+- [ ] 0 nested cards (Cardocalypse check passed)
+- [ ] 0 eyebrow labels / kicker tags above headings
+- [ ] 0 decorative badges or fake feature pills
+- [ ] 0 neon/purple/cyan gradients or decorative glassmorphism
+- [ ] 0 hairline borders combined with wide blurry drop shadows
+- [ ] 0 corporate buzzwords; copy is 100% human and outcome-focused
+- [ ] `text-balance` on all headings, `text-pretty` on all paragraphs
+- [ ] `tabular-nums` on all metrics, counters, and prices
+- [ ] `h-dvh` used for dynamic viewports, safe-area paddings respected
+- [ ] 100% semantic design tokens (0 raw hex colors)
+- [ ] 5-state resilience verified (Default, Loading, Empty, Error, Overflow)
