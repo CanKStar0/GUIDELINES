@@ -1,6 +1,6 @@
 ---
 name: autonomous-task-auditor
-description: "MANDATORY - Must execute view_file on this skill on every task to perform dynamic requirement analysis, deep research, self-auditing, and autonomous self-healing. Dynamic prompt-aware task auditor and quality engine."
+description: "Autonomous task auditor, implicit requirements deconstructor, and self-healing quality engine."
 ---
 
 # 🧠 Autonomous Task Auditor — Dynamic Quality Engine & Self-Healing Loop
@@ -68,7 +68,7 @@ Before finalizing any task, evaluate these diagnostic vectors and **fix any gaps
 
 ---
 
-## 🚪 4. Autonomous Self-Healing Protocol
+## 🚪 4. Autonomous Self-Healing Protocol & Safety Circuit Breakers
 
 ```
 [Defect or Edge Case Discovered During Audit]
@@ -77,8 +77,12 @@ Before finalizing any task, evaluate these diagnostic vectors and **fix any gaps
  1. Identify root cause and regression risks.
  2. Edit target files directly (`replace_file_content` / `write_to_file`) without asking the user.
  3. Re-run verification commands (`npm run build`, `npx tsc --noEmit`).
- 4. Do NOT deliver the task until all verification gates pass with Exit Code 0.
+ 4. Verify progress: error count must decrease with each attempt.
 ```
+
+### 🛑 Circuit Breaker & Safe Execution Gates:
+- **Max 3 Healing Iterations (`attempts <= 3`):** If the build or test continues to fail after 3 consecutive repair attempts, STOP immediately. Do NOT enter an infinite repair loop. Halt and provide a root-cause summary and terminal logs to the user.
+- **Destructive Command Ban:** Autonomous self-healing must NEVER execute destructive git or filesystem commands (`git reset --hard`, `git clean -fd`, `rm -rf`, `DROP TABLE`). Uncommitted user modifications must always be protected.
 
 ---
 

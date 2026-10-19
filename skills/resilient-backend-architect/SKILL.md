@@ -1,6 +1,6 @@
 ---
 name: resilient-backend-architect
-description: "MANDATORY - Must execute view_file on this skill before writing any backend, API, service, or server route code. Defensive, high-concurrency backend, rate limiting, quota guards, idempotency keys, and Zod schemas."
+description: "Defensive and scale-ready backend architect for high-concurrency APIs, distributed rate limiting, idempotency, quota guards, and Zod DTO contracts."
 ---
 
 # 🏗️ Resilient Backend Architect — Defensive & Scale-Ready Backend Engineering
@@ -31,7 +31,7 @@ The following patterns are **STRICTLY PROHIBITED** across all backend and API co
 ### 4. Naked Runtime `process.env` Access is BANNED
 - ❌ **Prohibited:** Accessing raw environment variables directly throughout business logic (e.g., `const key = process.env.STRIPE_SECRET_KEY`).
 - 💣 **Failure Mode:** If an environment variable is missing, undefined, or malformed, the application crashes silently at runtime when a user hits that specific branch.
-- ✅ **Mandatory:** Validate all environment variables at startup using a centralized Zod schema (`env.ts` / `t3-env` pattern). Fail fast on deployment if variables are invalid.
+- ✅ **Mandatory:** Validate all environment variables at startup using a centralized Zod schema (`env.ts` / `@t3-oss/env-nextjs` pattern). Support `skipValidation: !!process.env.SKIP_ENV_VALIDATION` so static builds and CI/CD pipelines do not crash on missing runtime secrets. Fail fast at runtime if variables are invalid.
 
 ### 5. Unbounded External Network Requests are BANNED
 - ❌ **Prohibited:** Calling external APIs without explicit timeouts (e.g., `await fetch("https://api.openai.com/...")`).
@@ -79,7 +79,8 @@ Every mutation endpoint and business-critical route must progress through these 
 # IMPLEMENTATION STANDARDS
 
 ### 1. Strict Runtime Validation & DTOs via Zod
-Every piece of data entering or leaving an endpoint must be validated through strict Zod schemas:
+Every piece of data entering or leaving an endpoint must be validated through strict Zod schemas.
+In Next.js 15+ Route Handlers, always await dynamic route `params` before validating (`const { id } = await params;`):
 ```typescript
 import { z } from "zod";
 

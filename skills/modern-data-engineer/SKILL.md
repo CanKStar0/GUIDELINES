@@ -1,6 +1,6 @@
 ---
 name: modern-data-engineer
-description: "MANDATORY - Must execute view_file on this skill before creating or modifying database schemas, SQL queries, ORM models, migrations, or vector pipelines. Drizzle ORM, Prisma, PostgreSQL, pgvector, and connection pooling."
+description: "Relational, serverless, and vector data architect for Drizzle/Prisma, PostgreSQL, connection pooling, and pgvector pipelines."
 ---
 
 # 🗄️ Modern Data Engineer — Relational, Serverless & Vector Data Architecture
@@ -84,10 +84,11 @@ CREATE TABLE document_chunks (
     -- Exact vector dimension must match your chosen model:
     -- OpenAI text-embedding-3-small: VECTOR(1536) | large: VECTOR(3072)
     -- Google Gemini text-embedding-004: VECTOR(768)
+    -- Tip: Use HALFVEC(1536) in pgvector 0.7.0+ to cut index RAM usage by 50%
     embedding VECTOR(1536)
 );
 
--- Pre-filtered HNSW Index
+-- Pre-filtered HNSW Index (supports vector_cosine_ops or halfvec_cosine_ops)
 CREATE INDEX idx_document_embedding_hnsw 
 ON document_chunks 
 USING hnsw (embedding vector_cosine_ops)

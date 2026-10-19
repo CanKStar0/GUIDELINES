@@ -77,7 +77,8 @@ Bu projede veya DCM çatısı altındaki herhangi bir projede işlem yaparken a�
 5. **Dinamik Kapsam & Otonom Self-Healing:** Promptun açık ve örtük tüm gereksinimlerini tespit et; bulunan kusurları kullanıcıya sormadan arka planda otomatik olarak gider.
 6. **Kök Neden Çözümü & Sıfır Happy-Path:** Yüzeysel yama yapma; `null/undefined` korumalarını, API hatalarını, kota sınırlarını ve çift işlem risklerini önceden çöz.
 7. **Tek Seferde Eksiksiz Teslim (Definition of Done):** Frontend'de 5 durumu (Default, Skeleton, Empty, Error, Optimistic), Backend'de Zod ve Rate Limit katmanlarını tek seferde tamamla.
-8. **Çalışırlık Doğrulaması (Verification Gate):** Kod tamamlandığında build (`npm run build`), typecheck (`npx tsc --noEmit`) ve runtime kontrollerini yapmadan işi bitti sayma.
+8. **Çalışırlık Doğrulaması & Circuit Breaker:** Kod tamamlandığında build (`npm run build`), typecheck (`npx tsc --noEmit`) kontrollerini yapmadan işi bitti sayma. Eğer derleme hataları üst üste 3 denemede düzelmezse (`attempts >= 3`), sonsuz döngüye girmeden dur ve kullanıcıya durum raporu sun.
+9. **Yıkıcı Komut Yasağı:** Otonom hata giderme veya derleme sırasında `git reset --hard`, `git clean -fd`, `rm -rf`, `DROP TABLE` gibi kullanıcı kodlarını veya veri tabanını silebilecek yıkıcı komutları çalıştırmak kesinlikle yasaktır.
 
 ---
 

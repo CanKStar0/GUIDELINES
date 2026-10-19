@@ -1,6 +1,6 @@
 ---
 name: bespoke-frontend-master
-description: "MANDATORY - Must execute view_file on this skill before writing any frontend, UI, Next.js, or React code. Project-first design constitution, semantic design tokens, anti-AI-slop hard rules, mechanical baseline UI standards, strict ban on badges/eyebrows, zero technical jargon copy, accessibility contracts, motion performance, and contextual state modeling."
+description: "Project-first design constitution, semantic design tokens, anti-AI-slop rules, mechanical UI baseline, accessibility contracts, and 5-state UI modeling."
 ---
 
 # 0. PROJECT-FIRST DESIGN CONSTITUTION
@@ -121,8 +121,7 @@ To eliminate sloppy AI output and substandard CSS execution, every component mus
 
 ### C. Sizing & Spacing Mechanics
 - **Square Elements:** Use `size-*` as modern baseline (e.g., `size-4`, `size-8`, `size-10`).
-- **Standard Scale:** Stick to the standardized spacing scale (`4`, `8`, `12`, `16`, `24`, `32px`). Never use arbitrary pixel classes like `p-[13px]` or `gap-[7px]`.
-- **Tailwind Version Awareness:** In Tailwind CSS v4, define tokens in CSS via `@theme` directives; in Tailwind v3, define tokens in `tailwind.config.*`. Never inject obsolete v3 config files into v4 setups.
+- **Tailwind Version Awareness:** In Tailwind CSS v4, define semantic tokens directly in CSS using `@theme { --color-surface: var(--surface); }` within your global CSS. In Tailwind v3, configure tokens in `tailwind.config.*`. Never generate obsolete `tailwind.config.js` or `postcss.config.js` files in a Tailwind v4 environment.
 
 ### D. Component Primitives First
 - **No Div-Buttons:** Never use `<div onClick={...}>` or `<span onClick={...}>` as interactive triggers. Use native `<button>` or accessible unstyled primitives (`Base UI`, `Radix UI`, `React Aria`).
@@ -330,21 +329,25 @@ Fake telemetry is classified as AI-slop. If test fixtures are required, structur
 ---
 
 # 10. CONTEXTUAL STATE MODELING
-
+ 
 Implement only semantically applicable states for each specific component:
 - **Default**
 - **Loading / Pending** (Only use skeletons if they prevent layout shift and wait time warrants it)
 - **Empty** (Single-line clean text preferred; avoid huge icon + CTA banners for simple lists)
 - **Error** (Descriptive, actionable error messages with retry triggers)
-- **Optimistic** (Only when mutation outcome is highly predictable with tested rollback)
+- **Optimistic** (Leverage React 19 `useOptimistic` or action states when mutation outcome is predictable with verified rollback)
 
 ---
 
-# 11. FRAMEWORK VERSION SAFETY
+# 11. FRAMEWORK VERSION SAFETY & MODERN RUNTIMES
 
-Never trigger automatic migrations to newer framework versions.
+Never trigger automatic breaking migrations to newer framework versions.
 - Inspect `package.json` and lockfiles first.
-- Match existing repository APIs (React 18 vs 19, Next.js Pages vs App Router).
+- **Next.js 15+ App Router:**
+  - Route params and searchParams are asynchronous: Always `const { id } = await params;`.
+  - Fetch requests default to `no-store` (uncached): specify `{ next: { revalidate: ... } }` or `{ cache: "force-cache" }` when caching is intentionally required.
+- **React 19:**
+  - Use `useActionState` (replacing deprecated `useFormState`) for server action forms and pending transitions.
 - Upgrades must only occur upon explicit user request.
 
 ---

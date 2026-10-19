@@ -19,7 +19,7 @@ The following AI habits and execution shortcuts are **STRICTLY PROHIBITED**:
 - ✅ **Mandatory:** Tests must validate real contracts, actual Zod schemas, real state transitions, and integration error cases.
 
 ### 2. Bypassing Type Errors with `@ts-ignore` or `any` is BANNED
-- ❌ **Prohibited:** Silencing TypeScript compiler errors by slapping `// @ts-ignore`, `// @ts-nocheck`, or casting `(data as any)` onto broken code.
+- ❌ **Prohibited:** Silencing TypeScript compiler errors by slapping `// @ts-ignore`, `// @ts-nocheck`, `// @ts-expect-error`, `/* eslint-disable */`, or casting `(data as any)` / `(data as unknown as SpecificType)` onto broken code.
 - 💣 **Failure Mode:** Destroys type safety guarantees across the codebase, resulting in catastrophic `TypeError: Cannot read properties of undefined` crashes in production.
 - ✅ **Mandatory:** Type errors must be fixed properly via correct generics, strict interface definitions, discrimination unions, or Zod parsing.
 
@@ -50,8 +50,11 @@ The following AI habits and execution shortcuts are **STRICTLY PROHIBITED**:
    - If a file has already been read in this conversation session, reuse working memory; never read the same file repeatedly.
 4. **Root-Cause Remediation (Anti-Regression):**
    - Superficial patches are banned. Resolve null pointer risks, CSS overflow bounds, and API failure modes at the architectural root.
-5. **Empirical Verification Gate:**
+5. **Empirical Verification Gate & Circuit Breaker:**
    - A task is NEVER complete until automated verification (TypeScript `npm run build` / `npx tsc --noEmit`, Python `pytest`, or project build command) passes with **Exit Code 0**.
+   - **Circuit Breaker (`attempts <= 3`):** If verification fails 3 consecutive times with no error reduction, halt immediately. Do not thrash in a continuous fix-break cycle; report findings and logs to the user.
+6. **Destructive Command Ban:**
+   - The shell must NEVER execute destructive git or filesystem commands (`git reset --hard`, `git clean -fd`, `rm -rf`, `DROP TABLE`). Uncommitted user code must never be overwritten.
 
 ---
 

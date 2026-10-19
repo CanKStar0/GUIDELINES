@@ -1,6 +1,6 @@
 ---
 name: seo-growth-architect
-description: "MANDATORY - Must execute view_file on this skill before optimizing SEO, metadata, sitemaps, JSON-LD schema, page speed, copywriting, or analytics tracking. Technical SEO, Schema JSON-LD, Core Web Vitals, CRO, and GA4."
+description: "Technical SEO, Core Web Vitals, JSON-LD Schema.org structured data, CRO, and GA4 DataLayer architecture."
 ---
 
 # 🔍 SEO & Growth Architect — Technical SEO, Conversion & DataLayer Architecture

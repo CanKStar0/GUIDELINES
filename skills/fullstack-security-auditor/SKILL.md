@@ -1,6 +1,6 @@
 ---
 name: fullstack-security-auditor
-description: "MANDATORY - Must execute view_file on this skill before handling authentication, authorization, user input sanitization, security headers, or sensitive secrets. Enterprise OWASP Top 10 security and DevSecOps."
+description: "Fullstack security auditor for OWASP Top 10 defenses, authentication/RBAC, input sanitization, security headers, and secret management."
 ---
 
 # 🛡️ Fullstack Security Auditor — Enterprise OWASP & DevSecOps Architecture

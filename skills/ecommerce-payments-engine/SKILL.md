@@ -1,6 +1,6 @@
 ---
 name: ecommerce-payments-engine
-description: "MANDATORY - Must execute view_file on this skill before handling payments, checkout, cart calculations, stock reservation, or order processing. Integer cent math, Stripe, Iyzico, and order state machines."
+description: "E-commerce and payments engine for integer cent math, Stripe/Iyzico integration, inventory reservation, and order state machines."
 ---
 
 # 🛒 E-Commerce & Payments Engine — Financial Accuracy & Transaction Resilience
@@ -70,12 +70,13 @@ export function calculateOrderSummary(items: CartItem[], discountCents = 0, ship
 import Stripe from "stripe";
 import { env } from "@/env"; // Validated startup Zod environment schema
 
-// Use the installed Stripe SDK's latest supported apiVersion (align with your project's Stripe SDK types)
+// Use the installed Stripe SDK's native default or align with project's typesafe version
 const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
-  apiVersion: (process.env.STRIPE_API_VERSION as any) ?? "2025-01-27.acacia"
+  ...(process.env.STRIPE_API_VERSION ? { apiVersion: process.env.STRIPE_API_VERSION as any } : {})
 });
 
-// Note: In Next.js App Router, extract rawBody using `await req.text()`; never parse JSON first
+// Note: In Next.js App Router, extract rawBody safely:
+// const rawBody = Buffer.from(await req.arrayBuffer()); // or await req.text()
 export async function handleStripeWebhook(rawBody: string | Buffer, signature: string) {
   let event: Stripe.Event;
 

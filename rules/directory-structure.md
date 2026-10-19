@@ -1,6 +1,6 @@
 # 📁 Proje Klasör ve Dosya Düzen Standartları (Directory Structure & File Placement Rules)
 
-> **Amaç:** Kod tabanında script, test, dokümantasyon ve araçların düzensiz dağılmasını önlemek, tüm scriptlerin `docs/` klasörü içerisinde düzenli yer almasını sağlamak.
+> **Amaç:** Kod tabanında script, test, dokümantasyon ve araçların düzensiz dağılmasını önlemek, tüm scriptlerin `scripts/` veya `tools/`, dokümantasyonların ise `docs/` klasörü içerisinde düzenli yer almasını sağlamak.
 
 ---
 

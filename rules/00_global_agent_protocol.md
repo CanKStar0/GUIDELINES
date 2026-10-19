@@ -50,6 +50,8 @@ Antigravity, Cursor, Claude veya herhangi bir AI runtime'ında çalışan TÜM A
 
 ---
 
-## 5. Dinamik Ampirik Doğrulama Kapısı & Teslimat Karnesi
+## 5. Dinamik Ampirik Doğrulama Kapısı, Circuit Breaker & Teslimat Karnesi
 - Kod değişikliği tamamlandığında projenin derleme ve test araçları ile (TypeScript/Next.js projelerinde `npm run build` / `npx tsc --noEmit`, Python'da `pytest`, diğer dillerde ilgili derleme aracı) ampirik doğrulama (Exit Code 0) alınmadan iş bitti sayılamaz.
+- **Circuit Breaker (`attempts <= 3`):** Üst üste 3 denemede derleme veya test hataları çözülemezse sonsuz tamir döngüsüne girmeden durulmalı, terminal çıktıları ve kök neden özeti kullanıcıya iletilmelidir.
+- **Yıkıcı Komut Yasağı:** Otonom düzeltme esnasında `git reset --hard`, `git clean -fd`, `rm -rf`, `DROP TABLE` gibi geri dönüşsüz komutlar kesinlikle çalıştırılamaz.
 - Görev sonunda `Autonomous Task Audit Summary` karnesini kullanıcıya sun.

@@ -1,6 +1,6 @@
 ---
 name: create-design-md
-description: "MANDATORY - Must execute view_file on this skill when bootstrapping a design system, generating/updating DESIGN.md, or auditing project UI against design contracts. Establishes 60-30-10 color palettes, typography scales, elevation tiers, strict ban on badges/eyebrows, plain human copy contracts, and design handoff plans."
+description: "Design system architect for bootstrapping DESIGN.md specifications, 60-30-10 palettes, typography scales, elevation tiers, and UI design plans."
 ---
 
 # Design System Architect & Audit Engine (`create-design-md`)
@@ -23,19 +23,35 @@ Never pick random palette colors. Distribute visual weight strictly:
 - **30% Secondary (Structure & Typography):** Text hierarchy, borders, separators, secondary containers (`foreground`, `text-muted`, `border`, `surface-elevated`).
 - **10% Accent (Interactive Focus):** Primary buttons, active tabs, focus rings, status indicators (`primary`, `primary-hover`, `accent`).
 
-```markdown
-## Semantic Token Palette
-- `background`: Canvas background (Light / Dark hex)
-- `surface`: Elevated cards and panels
-- `surface-elevated`: Floating modals and popovers
-- `border`: Structural dividers and borders (subtle contrast)
-- `foreground`: Primary high-contrast body text
-- `text-muted`: Supporting metadata and secondary text
-- `primary`: Interactive brand accent (buttons, active states)
-- `primary-foreground`: Text rendered on top of primary accent
-- `destructive`: Error states, danger alerts, destructive actions (or `danger` alias)
-- `warning`: Attention, pending, or cautionary alerts
-- `success`: Completed, verified, or positive status
+```css
+/* Semantic Token Palette (Tailwind CSS v4 @theme & CSS Variables) */
+:root {
+  --background: #ffffff;
+  --surface: #f8fafc;
+  --surface-elevated: #ffffff;
+  --border: #e2e8f0;
+  --foreground: #0f172a;
+  --text-muted: #64748b;
+  --primary: #0284c7;
+  --primary-foreground: #ffffff;
+  --destructive: #ef4444;
+  --warning: #f59e0b;
+  --success: #10b981;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-border: var(--border);
+  --color-foreground: var(--foreground);
+  --color-text-muted: var(--text-muted);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-destructive: var(--destructive);
+  --color-warning: var(--warning);
+  --color-success: var(--success);
+}
 ```
 
 ### 3. Typography Hierarchy & Copy Contract
@@ -49,15 +65,10 @@ Never pick random palette colors. Distribute visual weight strictly:
   - Metadata / Caption (`text-xs`): `leading-normal`.
   - Tabular / Numeric (`tabular-nums`): Mandatory for metrics, prices, timestamps.
 
-#### 🚫 STRICT BAN: ZERO EYEBROWS & ZERO KICKERS
-- **Do not define or render eyebrow typography roles.**
-- Uppercase tracked kicker tags placed above headings (`FEATURES`, `PLATFORM`, `INNOVATION`, `WHY US`) are strictly prohibited.
-- Section titles must stand strong and clear on their own without eyebrow crutches.
-
-#### 🚫 STRICT BAN: ZERO TECHNICAL JARGON & ALIENATING BUZZWORDS
-- Copy must speak in **plain, everyday human language** that a non-technical customer or business owner understands in **2 seconds**.
-- **Prohibited Buzzwords:** `Next-gen`, `Cutting-edge`, `State-of-the-art`, `Robust`, `Turnkey`, `End-to-end orchestration`, `Synergy`, `Paradigm shift`, `Holistic`, `Seamless integration`, `Hyper-scalable`, `Disruptive`, `Leverage`, `Cloud-native` (in customer-facing copy).
-- **Mandate:** Focus on real human outcomes (time saved, money earned, mistakes avoided).
+#### 🚫 STRICT BANS: ZERO EYEBROWS & ZERO TECHNICAL JARGON
+- **SSOT Reference:** Inherits all hard rules from `bespoke-frontend-master` (Sections 4 & 5).
+- **Eyebrow Ban:** Zero uppercase tracked kicker tags (`FEATURES`, `PLATFORM`, `INNOVATION`) above titles. Headings must stand strong and clear independently.
+- **Plain Language Mandate:** Zero corporate buzzwords (`Next-gen`, `Cutting-edge`, `Robust`, `Synergy`, `End-to-end orchestration`). Plain human copy understandable in 2 seconds. Focus on concrete outcomes (time saved, money made, errors prevented).
 
 ### 4. Sizing, Spacing & Density Tiers
 - **Base Grid:** Standard 4px / 8px scale (`4`, `8`, `12`, `16`, `24`, `32`, `48`, `64px`).
