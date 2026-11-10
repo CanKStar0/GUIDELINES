@@ -24,14 +24,14 @@ The following AI habits and execution shortcuts are **STRICTLY PROHIBITED**:
 - ✅ **Mandatory:** Type errors must be fixed properly via correct generics, strict interface definitions, discrimination unions, or Zod parsing.
 
 ### 3. Blind File Overwrites (No Pre-Read) are BANNED
-- ❌ **Prohibited:** Rewriting an entire file from chat memory without inspecting the physical file first (`write_to_file` over existing files without prior `view_file`).
+- ❌ **Prohibited:** Rewriting an entire file from chat memory without inspecting the actual live file first.
 - 💣 **Failure Mode:** Silently wipes out sibling utility functions, imports, comments, and recent edits made in other branches (fatal regression).
-- ✅ **Mandatory:** Always read the targeted file slice first (`view_file`), and execute surgical modifications using `replace_file_content`.
+- ✅ **Mandatory:** Always inspect the target file context first, and execute surgical modifications rather than blind whole-file clobbering.
 
 ### 4. Claiming Completion Without Verification is BANNED
 - ❌ **Prohibited:** Telling the user *"I have fixed the issue and everything works"* without actually executing the verification build command.
 - 💣 **Failure Mode:** Hallucinated confidence. Broken imports and syntax errors remain unresolved until the user tries to run the project.
-- ✅ **Mandatory:** The agent must physically execute `npm run build` or `npx tsc --noEmit` (or corresponding project verification command) and prove Exit Code 0 in the trajectory before claiming completion.
+- ✅ **Mandatory:** Run `npm run build` or `npx tsc --noEmit` (or corresponding project verification command) and verify success before claiming completion.
 
 ### 5. Partial Multi-Language Updates are BANNED
 - ❌ **Prohibited:** Adding a new button or label to `en.json` while leaving `tr.json`, `nl.json`, or other locale dictionaries out of sync.
@@ -40,10 +40,10 @@ The following AI habits and execution shortcuts are **STRICTLY PROHIBITED**:
 
 ---
 
-# THE 5 GOLDEN EXECUTION PILLARS
+# THE 6 GOLDEN EXECUTION PILLARS
 
 1. **Zero Guesswork & Live Code as SSOT:**
-   - Never assume file paths, exports, or database columns exist without empirical verification. Always verify live files on disk using `view_file` before making edits.
+   - Never assume file paths, exports, or database columns exist without empirical verification. Always verify live files on disk before making edits.
 2. **Terminal Discipline & Zero Waste:**
    - The shell (`run_command`) is reserved for package installation, compilation/testing (`npm run build`, `tsc --noEmit`, `test`), and targeted repo checks (`git status`, `git ls-files`). Aimless exploratory loops or raw file dumping (`cat`, `Get-Content`) are strictly forbidden.
 3. **In-Session Read Cache:**

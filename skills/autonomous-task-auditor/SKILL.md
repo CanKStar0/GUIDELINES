@@ -13,7 +13,7 @@ This skill completely eliminates AI complacency and premature "done" claims. It 
 
 * **No User-Side Debugging:** The user must never be forced to hunt for edge cases, missing states, or prompt oversights.
 * **Generous Reasoning & Research:** Leverage deep thinking, documentation lookups, security audits, and automated verification commands (`npm run build`, `tsc --noEmit`).
-* **Disk Verification over Chat Memory:** Old conversation snippets or abandoned prototypes must never be assumed to be live code. Every assumption must be verified empirically via `view_file` or `grep_search` against the file system.
+* **Disk Verification over Chat Memory:** Old conversation snippets or abandoned prototypes must never be assumed to be live code. Every assumption must be verified against actual files on disk.
 
 ---
 
@@ -75,7 +75,7 @@ Before finalizing any task, evaluate these diagnostic vectors and **fix any gaps
                      │
                      ▼
  1. Identify root cause and regression risks.
- 2. Edit target files directly (`replace_file_content` / `write_to_file`) without asking the user.
+ 2. Edit target files directly to address the root cause.
  3. Re-run verification commands (`npm run build`, `npx tsc --noEmit`).
  4. Verify progress: error count must decrease with each attempt.
 ```

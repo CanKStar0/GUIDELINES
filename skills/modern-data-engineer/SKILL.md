@@ -50,12 +50,15 @@ The following database practices are **STRICTLY PROHIBITED**:
 ### 1. Modern ORM & Schema Design (Drizzle ORM & Prisma)
 Database schemas must be designed strictly type-safe (End-to-End Type Safety):
 ```typescript
-import { pgTable, uuid, text, timestamp, integer, index } from "drizzle-orm/pg-core";
+import { pgTable, pgEnum, uuid, text, timestamp, integer, index } from "drizzle-orm/pg-core";
+
+export const userRoleEnum = pgEnum("user_role", ["user", "admin", "lead"]);
+export const orderStatusEnum = pgEnum("order_status", ["pending", "paid", "failed"]);
 
 export const users = pgTable("users", {
   id: uuid("id").defaultRandom().primaryKey(),
   email: text("email").notNull().unique(),
-  role: text("role", { enum: ["user", "admin", "lead"] }).default("user").notNull(),
+  role: userRoleEnum("role").default("user").notNull(),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
 });
@@ -64,7 +67,7 @@ export const orders = pgTable("orders", {
   id: uuid("id").defaultRandom().primaryKey(),
   userId: uuid("user_id").references(() => users.id, { onDelete: "cascade" }).notNull(),
   totalCents: integer("total_cents").notNull(), // Integer cent precision
-  status: text("status", { enum: ["pending", "paid", "failed"] }).default("pending").notNull(),
+  status: orderStatusEnum("status").default("pending").notNull(),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
 }, (table) => [
   index("idx_orders_user_status_created").on(table.userId, table.status, table.createdAt.desc())

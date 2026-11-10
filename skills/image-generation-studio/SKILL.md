@@ -1,11 +1,11 @@
 ---
 name: image-generation-studio
-description: "Professional studio asset renderer and e-commerce image generator. Zero text overlays, studio lighting, floor shadows, and isolated product rendering using Antigravity generate_image."
+description: "Professional studio asset renderer and e-commerce image generator. Zero text overlays, studio lighting, floor shadows, and isolated product rendering."
 ---
 
 # 📸 Image Generation Studio — Commercial Product & Studio Asset Renderer
 
-This skill provides an authoritative prompting framework for generating commercial e-commerce assets, product showcases, and marketing visuals with Antigravity's `generate_image` tool, ensuring **zero text glitches, studio-grade directional lighting, and hyper-realistic product separation**.
+This skill provides an authoritative prompting framework for generating commercial e-commerce assets, product showcases, and marketing visuals with image generator subagents and studio rendering pipelines, ensuring **zero text glitches, studio-grade directional lighting, and hyper-realistic product separation**.
 
 ---
 

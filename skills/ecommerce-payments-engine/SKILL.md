@@ -70,9 +70,9 @@ export function calculateOrderSummary(items: CartItem[], discountCents = 0, ship
 import Stripe from "stripe";
 import { env } from "@/env"; // Validated startup Zod environment schema
 
-// Use the installed Stripe SDK's native default or align with project's typesafe version
+// Initialize with strongly typed config (never bypass with 'as any')
 const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
-  ...(process.env.STRIPE_API_VERSION ? { apiVersion: process.env.STRIPE_API_VERSION as any } : {})
+  typescript: true,
 });
 
 // Note: In Next.js App Router, extract rawBody safely:

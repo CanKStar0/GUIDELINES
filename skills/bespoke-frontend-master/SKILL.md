@@ -256,7 +256,7 @@ Never ship a component that only handles the ideal "happy path". Every data-back
 2. **Loading / Pending:** Skeleton screens matching exact rendered geometry to eliminate layout shift (CLS).
 3. **Empty / Zero-State:** Helpful, single-line guide with direct action trigger (avoid giant cartoon illustrations for simple tables).
 4. **Error / Failed:** Human-readable explanation with explicit retry trigger (`onClick={refetch}`).
-5. **Partial / Overflow:** Long text truncated gracefully (`truncate` / `line-clamp-2`), numerical figures formatted via `tabular-nums`.
+5. **Optimistic & Overflow:** Instant UI feedback during mutations (with rollback on failure) and graceful text/content truncation (`truncate` / `line-clamp-2`, `tabular-nums`).
 
 ---
 
@@ -273,4 +273,4 @@ Before declaring any UI deliverable complete, audit against this checklist:
 - [ ] `tabular-nums` on all metrics, counters, and prices
 - [ ] `h-dvh` used for dynamic viewports, safe-area paddings respected
 - [ ] 100% semantic design tokens (0 raw hex colors)
-- [ ] 5-state resilience verified (Default, Loading, Empty, Error, Overflow)
+- [ ] 5-state resilience verified (Default, Loading, Empty, Error, Optimistic & Overflow)

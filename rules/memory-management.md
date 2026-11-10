@@ -14,9 +14,9 @@ Ajan her turda tüm sohbet geçmişini tekrar tekrar okumak yerine şu 4 katmanl
    - Projenin aktif mimari kararları ve ilerleme durumu Antigravity'de `implementation_plan.md` plan artifact'i veya CLI ortamında `.agent/roadmap.json` üzerinden 10-15 satırlık özetle takip edilir.
 3. **Katman 3: Tek Gerçek Kaynak (Diskteki Canlı Kod - Disk as SSOT):**
    - Sohbette geçmişte paylaşılmış eski kod bloklarını "canlı kod" sanmak KESİNLİKLE YASAKTIR.
-   - Her zaman `view_file` ile **diskteki en güncel fiziksel dosyayı** oku.
+   - Her zaman **diskteki en güncel fiziksel dosyayı** referans al.
 4. **Katman 4: İhtiyaç Anında Yüklenen Uzmanlıklar (On-Demand Skills):**
-   - Tüm kuralları hafızada tutmak yerine sadece ilgili `SKILL.md` dosyasını `view_file` ile oku.
+   - Tüm kuralları hafızada tutmak yerine gerektiğinde ilgili `SKILL.md` standartlarını incele.
 
 ---
 
