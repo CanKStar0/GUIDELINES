@@ -66,37 +66,12 @@ Never pick random palette colors. Distribute visual weight strictly:
 - **30% Secondary (Structure & Typography):** Text hierarchy, borders, separators, secondary containers (`foreground`, `text-muted`, `border`, `surface-elevated`).
 - **10% Accent (Interactive Focus):** Primary buttons, active tabs, focus rings, status indicators (`primary`, `primary-hover`, `accent`).
 
-```markdown
-## Semantic Token Palette
-- `background`: Canvas background (Light / Dark hex or OKLCH)
-- `surface`: Elevated cards and panels
-- `surface-subtle`: Secondary tinted surfaces
-- `surface-elevated`: Floating modals and popovers
-- `border`: Structural dividers and borders (subtle contrast)
-- `foreground`: Primary high-contrast body text
-- `text-muted`: Supporting metadata and secondary text
-- `primary`: Interactive brand accent (buttons, active states)
-- `primary-foreground`: Text rendered on top of primary accent
-- `destructive`: Error states, danger alerts, destructive actions
-- `warning`: Attention, pending, or cautionary alerts
-- `success`: Completed, verified, or positive status
-- `info`: Non-critical informational cues
-```
+> 📌 **SSOT Cross-Reference:** Full semantic token role definitions (`background`, `surface`, `foreground`, `primary`, `destructive`, etc.), the 67-rule Anti-Slop catalog, and mechanical CSS baseline (`text-balance`, `text-pretty`, `tabular-nums`, `h-dvh`) are governed by `bespoke-frontend-master`. `DESIGN.md` maps those exact semantic roles to concrete OKLCH/hex values and modular scales.
 
 ### 2. Typography Hierarchy & Copy Contract
-- **Primary Typeface:** Body copy and interface controls (e.g., Geist, Inter, SF Pro, or custom brand font).
-- **Secondary Typeface (Optional):** Editorial display headings or monospace for code/metrics.
-- **Type Scale:**
-  - Display (`text-4xl` / `text-5xl`): Tight leading (`leading-none`), tracking tight (`tracking-tight`), `text-balance`.
-  - Heading 1 (`text-2xl` / `text-3xl`): `leading-tight`, `tracking-tight`, `text-balance`.
-  - Heading 2 & 3 (`text-lg` / `text-xl`): `leading-snug`, `text-balance`.
-  - Body (`text-sm` / `text-base`): `leading-relaxed`, `text-pretty`.
-  - Metadata / Caption (`text-xs`): `leading-normal`.
-  - Tabular / Numeric (`tabular-nums`): Mandatory for metrics, prices, timestamps.
-
-#### 🚫 Strict Anti-Slop Typography Laws:
-- **ZERO EYEBROWS & ZERO KICKERS:** Uppercase tracked kicker tags placed above headings (`FEATURES`, `OVERVIEW`, `WHY US`) are strictly prohibited.
-- **PLAIN HUMAN LANGUAGE:** Copy must explain real human outcomes in everyday words. Zero corporate buzzwords (`Next-gen`, `Cutting-edge`, `State-of-the-art`, `Robust`, `Turnkey`, `Synergy`).
+- **Primary & Secondary Typeface:** Body/UI font + optional editorial display or monospace for code/metrics.
+- **Type Scale:** Define concrete sizes/leading for Display (`text-4xl`/`5xl`), H1 (`text-2xl`/`3xl`), H2/H3 (`text-lg`/`xl`), Body (`text-sm`/`base`), and Caption (`text-xs`).
+- **Anti-Slop Copy Laws:** Zero uppercase kicker/eyebrow tags above headings; plain human outcome-focused language (zero corporate buzzwords).
 
 ### 3. Sizing, Spacing & Density Tiers
 - **Base Grid:** Standard 4px / 8px scale (`4`, `8`, `12`, `16`, `24`, `32`, `48`, `64px`).

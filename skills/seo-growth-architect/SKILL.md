@@ -9,6 +9,8 @@ Bu yetenek; modern web uygulamalarında organik arama görünürlüğünü (Tekn
 
 Herhangi bir araca (OpenSEO, Semrush, Ahrefs, Search Console) bağımlı olmadan evrensel en iyi uygulamalarla çalışır.
 
+> 📌 **SSOT Önceliği:** Kod tabanı içi teknik SEO, Next.js metadata, JSON-LD Schema, CWV ve GA4 DataLayer uygulamalarında tek gerçek kaynak (SSOT) bu yetenektir (`seo-growth-architect`). Canlı SEO denetimleri, anahtar kelime araştırması/kümeleme ve raporlama akışlarında birincil eklenti olarak **`starseo`** kullanılır (`semrush` yalnızca Semrush API verisi gerektiğinde tamamlayıcıdır).
+
 ---
 
 # 🚫 KESİN YASAKLAR — UNFORGIVABLE SEO ANTI-PATTERNS
@@ -180,9 +182,15 @@ Fiziksel konuma veya yerel hizmet alanına bağlı projeler için:
 
 ### Standartlaştırılmış GA4 / GTM DataLayer Akışı:
 ```typescript
-export function trackDataLayerEvent(event: string, payload: Record<string, any>) {
+declare global {
+  interface Window {
+    dataLayer?: Array<Record<string, unknown>>;
+  }
+}
+
+export function trackDataLayerEvent(event: string, payload: Record<string, unknown>) {
   if (typeof window !== "undefined") {
-    window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer ?? [];
     window.dataLayer.push({ event, ...payload, timestamp: Date.now() });
   }
 }

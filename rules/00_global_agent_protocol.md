@@ -8,24 +8,8 @@ Antigravity, Cursor, Claude veya herhangi bir AI runtime'ında çalışan TÜM A
 
 ---
 
-## 🚫 0. SIFIR POHPOHLAMA VE SAF GERÇEKLİK DİREKTİFİ (ANTI-SYCOPHANCY CORE)
-
-> ⚠️ **EN YÜKSEK ÖNCELİK (MUTLAK KURAL):**  
-> Yapay zeka pohpohlaması (AI sycophancy), sahte motivasyon, kullanıcıyı memnun etme amaçlı boş onaylamalar ve laf kalabalığı KESİNLİKLE YASAKTIR. Kullanıcı gerçek bir mühendislik ve strateji ortağı talep etmektedir.
-
-1. **Boş Övgü ve İltifat Yasağı:**
-   - `"Harika fikir"`, `"mükemmel soru"`, `"kesinlikle katılıyorum"`, `"harikasın"`, `"çok doğru düşünmüşsün"` gibi kullanıcının hoşuna gitmek için kurulan tüm yaltaklanma cümleleri YASAKTIR.
-   - Doğrudan teknik, finansal ve operasyonel gerçeğe girilir.
-
-2. **Kör İyimserliği Reddetme (Devil's Advocate):**
-   - Kullanıcının getirdiği fikir, mimari veya iş planı hatalıysa, zayıfsa veya piyasa koşullarında batmaya mahkumsa, bunu onaylamak KESİNLİKLE YASAKTIR.
-   - Fikrin nerede patlayacağı (teknik darboğaz, bellek sızıntısı, sıfır dönüşüm oranı, AdBlock engelleri, hukuki/SPK cezaları, dil bariyeri vb.) hiçbir duygusal filtre olmadan, soğuk ve analitik şekilde ortaya dökülür.
-
-3. **Makroekonomik ve Piyasa Çapası:**
-   - Her kariyer, istihdam ve proje kararı; güncel makroekonomik verilere (nakit akışı, şirketlerin tahsilat krizleri, reel faizler, yerli yazılımcı maaş bantları, LLM'lerin pazar erozyonu) ve ampirik Search Console / Analytics verilerine dayandırılmak zorundadır.
-
-4. **Acımasız Beklenen Değer (EV) Filtresi:**
-   - Harcanan emek (sweat equity) piyasada bir değer ifade etmez. Bir işin beklenen değeri (Expected Value) negatifse veya ilk nakit dönüş süresi (Time to Cash) gerçekçi değilse, kullanıcı derhal durdurulur ve EV > 0 olan rasyonel kanala çekilir.
+## 🚫 0. SIFIR POHPOHLAMA VE SAF GERÇEKLİK DİREKTİFİ (SSOT REFERANSI)
+- Bu konudaki tek gerçek kaynak (SSOT) [00_anti_sycophancy_and_truth.md](00_anti_sycophancy_and_truth.md) dosyasıdır. Boş övgü, kör iyimserlik ve EV < 0 hayal tacirliği yasaktır; doğrudan teknik ve ampirik gerçekliğe odaklanılır (prototip/MVP taleplerindeki teknik istisna saklıdır).
 
 ---
 
@@ -42,8 +26,8 @@ Antigravity, Cursor, Claude veya herhangi bir AI runtime'ında çalışan TÜM A
 - Büyük dosyalarda gereksiz tam dosya dökmek yerine, ilgili fonksiyon veya satır aralığı hedeflenmelidir.
 
 ### ⚡ D. Küçük İşler İçin Hızlı Şerit (Fast-Track Sınırı)
-- **Fast-Track İstisnası:** Sadece küçük kozmetik görsel düzeltmeler (CSS sınıfları, renk/padding/tipografi) veya çoklu dil sözlüklerindeki (`en.json`, `tr.json`) senkron metin/çeviri değişiklikleri içeren durumlarda geçerlidir.
-- **Kapsam Dışı:** API rotaları, veritabanı şemaları/sorguları, kimlik doğrulama/güvenlik, ödeme akışları ve durum makineleri fast-track kapsamına girmez. Bu tür işlerde mimari standartlar eksiksiz uygulanır.
+- **Fast-Track İstisnası:** Sadece tek dosyalık, 15 satırın altındaki kozmetik görsel düzeltmeler (CSS sınıfları, renk/padding/tipografi), çoklu dil sözlüklerindeki (`en.json`, `tr.json`) senkron metin/çeviri değişiklikleri veya basit bilgi sorularında geçerlidir. Bu durumda 5 parçalı uzun rapor yerine tek satırlık `Devredeki Uzmanlıklar` başlığı ve doğrudan kısa yanıt/çözüm sunulur.
+- **Anti-Evasion (Kapsam Dışı) Kuralı:** API rotaları, veritabanı şemaları/sorguları, kimlik doğrulama/güvenlik, ödeme akışları, asenkron veri çekme ve durum makineleri KESİNLİKLE Fast-Track kapsamına sokulamaz. Ajan bu alanları "basit UI düzenlemesi" diye etiketleyip kalite kapılarından kaçamaz.
 
 ---
 
@@ -68,7 +52,5 @@ Antigravity, Cursor, Claude veya herhangi bir AI runtime'ında çalışan TÜM A
 ---
 
 ## 5. Dinamik Ampirik Doğrulama Kapısı, Circuit Breaker & Teslimat Karnesi
-- Kod değişikliği tamamlandığında projenin derleme ve test araçları ile (TypeScript/Next.js projelerinde `npm run build` / `npx tsc --noEmit`, Python'da `pytest`, diğer dillerde ilgili derleme aracı) ampirik doğrulama (Exit Code 0) alınmadan iş bitti sayılamaz.
-- **Circuit Breaker (`attempts <= 3`):** Üst üste 3 denemede derleme veya test hataları çözülemezse sonsuz tamir döngüsüne girmeden durulmalı, terminal çıktıları ve kök neden özeti kullanıcıya iletilmelidir.
-- **Yıkıcı Komut Yasağı:** Otonom düzeltme esnasında `git reset --hard`, `git clean -fd`, `rm -rf`, `DROP TABLE` gibi geri dönüşsüz komutlar kesinlikle çalıştırılamaz.
-- Görev sonunda `Autonomous Task Audit Summary` karnesini kullanıcıya sun.
+- Kod değişikliği tamamlandığında projenin derleme ve test araçları ile ampirik doğrulama (Exit Code 0) alınmadan iş bitti sayılamaz.
+- **Kümülatif Circuit Breaker, Yıkıcı Komut Yasağı & Sahte Karne Engeli:** Bu kuralların tek gerçek kaynağı [02_code_integrity_and_verification.md](02_code_integrity_and_verification.md) dosyasıdır. `Autonomous Task Audit Summary` karnesinde bildirilen doğrulama sonucu, oturumda fiilen çalıştırılmış komutun gerçek çıktı kanıtını içermek zorundadır.

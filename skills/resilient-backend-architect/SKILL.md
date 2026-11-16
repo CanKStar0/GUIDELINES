@@ -101,11 +101,11 @@ export type CreateOrderDTO = z.infer<typeof CreateOrderSchema>;
 ### 2. Idempotency & Distributed Locking (Zero Race Conditions)
 Every financial or state-altering `POST/PUT` mutation must honor an `Idempotency-Key` header with atomic locking:
 ```typescript
-export async function handleIdempotentMutation(key: string, fn: () => Promise<any>) {
+export async function handleIdempotentMutation<T>(key: string, fn: () => Promise<T>): Promise<T> {
   // 1. Check if already processed
   const cachedResponse = await redis.get(`idempotency:${key}`);
   if (cachedResponse) {
-    return JSON.parse(cachedResponse);
+    return JSON.parse(cachedResponse) as T;
   }
 
   // 2. Acquire atomic distributed lock (NX=Not Exists) to eliminate TOCTOU race conditions
@@ -132,8 +132,8 @@ export async function fetchWithTimeout(url: string, options: RequestInit = {}, t
     const signal = options.signal ?? AbortSignal.timeout(timeoutMs);
     const response = await fetch(url, { ...options, signal });
     return response;
-  } catch (err: any) {
-    if (err.name === "TimeoutError" || err.name === "AbortError") {
+  } catch (err: unknown) {
+    if (err instanceof Error && (err.name === "TimeoutError" || err.name === "AbortError")) {
       throw new Error(`External service timed out (${timeoutMs}ms limit exceeded).`);
     }
     throw err;

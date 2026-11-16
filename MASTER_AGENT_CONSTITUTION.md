@@ -2,7 +2,7 @@
 
 > 🛑 **MANDATORY CONSTITUTION & REPOSITORY RULE (SSOT):**
 > Bu belge, tüm projelerde çalışan AI Agent'lar için merkezi kural ve yetenek kütüphanesidir (Single Source of Truth).
-> `C:\Users\canpo\OneDrive\Desktop\GUIDELINES` Git reposundan yönetilir ve `~/.gemini/config/` (Antigravity Runtime) dizinine Windows Directory Junction ile doğrudan bağlıdır.
+> `<GLOBAL_GUIDELINES_ROOT>` Git reposundan yönetilir ve `~/.gemini/config/` (Antigravity Runtime) dizinine Directory Junction / Symlink ile doğrudan bağlıdır.
 
 ---
 
@@ -48,22 +48,24 @@ When evaluating a problem or reviewing code, always follow this order:
 
 ## ⚡ Master Skill Router & Yetenek Merkezi
 
-Bu projede veya DCM çatısı altındaki herhangi bir projede işlem yaparken aşağıdaki uzmanlıklar `C:\Users\canpo\OneDrive\Desktop\GUIDELINES\skills/` dizininden dinamik olarak okunup uygulanır:
+Bu projede veya DCM çatısı altındaki herhangi bir projede işlem yaparken aşağıdaki uzmanlıklar `<GLOBAL_GUIDELINES_ROOT>/skills/` (`~/.gemini/config/skills/`) dizininden dinamik olarak okunup uygulanır:
 
 | Alan / Uzmanlık | Açıklama | Kaynak Dosya (SSOT) |
 | :--- | :--- | :--- |
-| **👑 Master Orchestrator** | Akıllı Yetenek Dağıtıcısı & Otonom İntent Yönlendirici | [skills/master-orchestrator/SKILL.md](file:///C:/Users/canpo/OneDrive/Desktop/GUIDELINES/skills/master-orchestrator/SKILL.md) |
-| **🧠 Autonomous Task Auditor** | Dinamik İntent Analizi, Örtük İhtiyaçlar, Self-Healing, Kalite Motoru | [skills/autonomous-task-auditor/SKILL.md](file:///C:/Users/canpo/OneDrive/Desktop/GUIDELINES/skills/autonomous-task-auditor/SKILL.md) |
-| **🎨 Bespoke Frontend Master** | Anti-AI-Slop UI/UX, Next.js 15 App Router, React 19 RSC, 5-State UI | [skills/bespoke-frontend-master/SKILL.md](file:///C:/Users/canpo/OneDrive/Desktop/GUIDELINES/skills/bespoke-frontend-master/SKILL.md) |
-| **📐 Design System Architect** | Kök DESIGN.md Sözleşmesi, 60-30-10 Renk Dağılımı, UI Planları | [skills/create-design-md/SKILL.md](file:///C:/Users/canpo/OneDrive/Desktop/GUIDELINES/skills/create-design-md/SKILL.md) |
-| **🏗️ Resilient Backend Architect** | Sıfır Happy-Path, Rate Limit, Idempotency, Quota Guard, Zod DTO | [skills/resilient-backend-architect/SKILL.md](file:///C:/Users/canpo/OneDrive/Desktop/GUIDELINES/skills/resilient-backend-architect/SKILL.md) |
-| **🗄️ Modern Data Engineer** | Drizzle/Prisma ORM, PostgreSQL/MySQL, pgvector (RAG/AI), Pooling | [skills/modern-data-engineer/SKILL.md](file:///C:/Users/canpo/OneDrive/Desktop/GUIDELINES/skills/modern-data-engineer/SKILL.md) |
-| **🛒 E-Commerce & Payments** | Integer Cent Hesabı, Stripe / İyzico 3D Secure, State Machine, Stok Kilidi | [skills/ecommerce-payments-engine/SKILL.md](file:///C:/Users/canpo/OneDrive/Desktop/GUIDELINES/skills/ecommerce-payments-engine/SKILL.md) |
-| **🛡️ Fullstack Security Auditor** | OWASP Top 10, CSRF, DOMPurify XSS, Argon2id, Security Headers | [skills/fullstack-security-auditor/SKILL.md](file:///C:/Users/canpo/OneDrive/Desktop/GUIDELINES/skills/fullstack-security-auditor/SKILL.md) |
-| **🔍 SEO & Growth Architect** | Teknik SEO, JSON-LD Schema, Core Web Vitals, CRO, GA4 DataLayer | [skills/seo-growth-architect/SKILL.md](file:///C:/Users/canpo/OneDrive/Desktop/GUIDELINES/skills/seo-growth-architect/SKILL.md) |
-| **🚀 Superpowers Harness & Memory**| Sıfır Tahmin, Hermes Hata Belleği, i18n Eşitliği, 4 Sütun QA, Build Kapısı | [skills/superpowers-execution-harness/SKILL.md](file:///C:/Users/canpo/OneDrive/Desktop/GUIDELINES/skills/superpowers-execution-harness/SKILL.md) |
-| **📸 Image Generation Studio** | Sıfır Metin, 8K Stüdyo Işığı, Ürün Render, Profesyonel Promptlama | [skills/image-generation-studio/SKILL.md](file:///C:/Users/canpo/OneDrive/Desktop/GUIDELINES/skills/image-generation-studio/SKILL.md) |
-| **🚀 Antigravity Guide** | Subagent Dağıtımı, Background Scheduling, Artifacts, Kural Hiyerarşisi | [skills/antigravity-guide/SKILL.md](file:///C:/Users/canpo/OneDrive/Desktop/GUIDELINES/skills/antigravity-guide/SKILL.md) |
+| **👑 Master Orchestrator** | Akıllı Yetenek Dağıtıcısı & Otonom İntent Yönlendirici | [skills/master-orchestrator/SKILL.md](skills/master-orchestrator/SKILL.md) |
+| **🧠 Autonomous Task Auditor** | Dinamik İntent Analizi, Örtük İhtiyaçlar, Self-Healing, Kalite Motoru | [skills/autonomous-task-auditor/SKILL.md](skills/autonomous-task-auditor/SKILL.md) |
+| **🎨 Bespoke Frontend Master** | Anti-AI-Slop UI/UX, Next.js 15+ App Router, React 19 RSC, 5-State UI | [skills/bespoke-frontend-master/SKILL.md](skills/bespoke-frontend-master/SKILL.md) |
+| **📐 Design System Architect** | Kök DESIGN.md Sözleşmesi, 60-30-10 Renk Dağılımı, UI Planları | [skills/create-design-md/SKILL.md](skills/create-design-md/SKILL.md) |
+| **🏗️ Resilient Backend Architect** | Sıfır Happy-Path, Rate Limit, Idempotency, Quota Guard, Zod DTO | [skills/resilient-backend-architect/SKILL.md](skills/resilient-backend-architect/SKILL.md) |
+| **🗄️ Modern Data Engineer** | Drizzle/Prisma ORM, PostgreSQL/MySQL, pgvector (RAG/AI), Pooling | [skills/modern-data-engineer/SKILL.md](skills/modern-data-engineer/SKILL.md) |
+| **🛒 E-Commerce & Payments** | Integer Cent Hesabı, Stripe / İyzico 3D Secure, State Machine, Stok Kilidi | [skills/ecommerce-payments-engine/SKILL.md](skills/ecommerce-payments-engine/SKILL.md) |
+| **🛡️ Fullstack Security Auditor** | OWASP Top 10, CSRF, XSS Sanitization, Argon2id/Auth.js v5, Security Headers | [skills/fullstack-security-auditor/SKILL.md](skills/fullstack-security-auditor/SKILL.md) |
+| **🔍 SEO & Growth Architect** | Teknik SEO, JSON-LD Schema, Core Web Vitals, CRO, GA4 DataLayer | [skills/seo-growth-architect/SKILL.md](skills/seo-growth-architect/SKILL.md) |
+| **🚀 Superpowers Harness & Memory**| Sıfır Tahmin, Hermes Hata Belleği, i18n Eşitliği, 4 Sütun QA, Build Kapısı | [skills/superpowers-execution-harness/SKILL.md](skills/superpowers-execution-harness/SKILL.md) |
+| **📸 Image Generation Studio** | Sıfır Metin, 8K Stüdyo Işığı, Ürün Render, Profesyonel Promptlama | [skills/image-generation-studio/SKILL.md](skills/image-generation-studio/SKILL.md) |
+| **🚀 Antigravity Guide** | Subagent Dağıtımı, Background Scheduling, Artifacts, Kural Hiyerarşisi | [skills/antigravity-guide/SKILL.md](skills/antigravity-guide/SKILL.md) |
+| **📝 Simple Issue Description** | Hata Raporu, PR veya Özellik Talebini Sade Davranış Odaklı Issue'ya Çevirme | [skills/simple-issue-description/SKILL.md](skills/simple-issue-description/SKILL.md) |
+| **✍️ Humanizer** | Yapay Zeka Yazım Kalıplarını (26 AI Tell) Temizleyip Doğal İnsan Diline Çevirme | [skills/humanizer/SKILL.md](skills/humanizer/SKILL.md) |
 
 ---
 
@@ -76,8 +78,8 @@ Bu projede veya DCM çatısı altındaki herhangi bir projede işlem yaparken a�
 5. **Dinamik Kapsam & Otonom Self-Healing:** Promptun açık ve örtük tüm gereksinimlerini tespit et; bulunan kusurları kullanıcıya sormadan arka planda otomatik olarak gider.
 6. **Kök Neden Çözümü & Sıfır Happy-Path:** Yüzeysel yama yapma; `null/undefined` korumalarını, API hatalarını, kota sınırlarını ve çift işlem risklerini önceden çöz.
 7. **Tek Seferde Eksiksiz Teslim (Definition of Done):** Frontend'de 5 durumu (Default, Skeleton, Empty, Error, Optimistic), Backend'de Zod ve Rate Limit katmanlarını tek seferde tamamla.
-8. **Çalışırlık Doğrulaması & Circuit Breaker:** Kod tamamlandığında build (`npm run build`), typecheck (`npx tsc --noEmit`) kontrollerini yapmadan işi bitti sayma. Eğer derleme hataları üst üste 3 denemede düzelmezse (`attempts >= 3`), sonsuz döngüye girmeden dur ve kullanıcıya durum raporu sun.
-9. **Yıkıcı Komut Yasağı:** Otonom hata giderme veya derleme sırasında `git reset --hard`, `git clean -fd`, `rm -rf`, `DROP TABLE` gibi kullanıcı kodlarını veya veri tabanını silebilecek yıkıcı komutları çalıştırmak kesinlikle yasaktır.
+8. **İki Aşamalı Gerçek Doğrulama & Kümülatif Circuit Breaker:** `npm run build` / `npx tsc --noEmit` tek başına gerçek test değildir. Kod tamamlandığında hem statik derleme (Aşama 1) hem de canlı sunucu/tarayıcı E2E veya gerçek HTTP/DB testi (Aşama 2) fiilen çalıştırılmalı ve gerçek çıktı kanıtı sunulmalıdır; canlı test çalıştırılamadıysa `UNVERIFIED` olarak dürüstçe raporlanmalıdır. Hatalar kümülatif 3 denemede düzelmezse dur (SSOT: [rules/02_code_integrity_and_verification.md](rules/02_code_integrity_and_verification.md)).
+9. **Genişletilmiş Yıkıcı Komut Yasağı:** Otonom hata giderme veya derleme sırasında `git reset --hard`, `git clean -fd`, `git checkout -- .`, `git restore .`, `rm -rf`, `DROP TABLE`, `npm install --force` komutları ve okunmamış dosyayı körlemesine ezmek (`Overwrite: true`) kesinlikle yasaktır.
 
 ---
 
@@ -89,5 +91,5 @@ dosyasını kullanın. Beklenen proje talimatı yapısı
 [PROJECT_AGENT_TEMPLATE.md](PROJECT_AGENT_TEMPLATE.md) içinde tanımlıdır.
 
 ```text
-DCM_GLOBAL_GUIDELINES_ROOT: C:\Users\canpo\OneDrive\Desktop\GUIDELINES
+DCM_GLOBAL_GUIDELINES_ROOT: <GLOBAL_GUIDELINES_ROOT> (Antigravity Runtime: ~/.gemini/config/)
 ```

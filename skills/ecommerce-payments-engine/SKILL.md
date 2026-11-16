@@ -82,8 +82,9 @@ export async function handleStripeWebhook(rawBody: string | Buffer, signature: s
 
   try {
     event = stripe.webhooks.constructEvent(rawBody, signature, env.STRIPE_WEBHOOK_SECRET);
-  } catch (err: any) {
-    throw new Error(`Webhook Signature Verification Failed: ${err.message}`);
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : "Unknown webhook verification error";
+    throw new Error(`Webhook Signature Verification Failed: ${message}`);
   }
 
   if (event.type === "payment_intent.succeeded") {

@@ -108,7 +108,7 @@ Every line of code and rendered surface must pass these 67 deterministic checks:
 20. `rule-radial-halo`: **BANNED.** Ambient glowing radial gradient orbs behind dark surfaces are prohibited.
 21. `rule-radial-spotlight-glow`: **BANNED.** Soft spotlights placed behind text sections to simulate depth are prohibited.
 22. `rule-ai-color-palette`: **BANNED.** Default purple-to-blue gradients, neon violet, and electric cyan are strictly forbidden.
-23. `rule-dark-glow`: **BANNED.** Neon glowing borders and buttons in dark mode (`shadow-[0_0_20px_theme(colors.cyan.500)]`) are prohibited.
+23. `rule-dark-glow`: **BANNED.** Neon glowing borders and buttons in dark mode (`shadow-[0_0_20px_var(--color-cyan-500)]`) are prohibited.
 24. `rule-gradient-text`: **BANNED.** Multi-color gradients applied to text (`bg-clip-text text-transparent`) are prohibited. Use high-contrast solid colors.
 25. `rule-gray-on-color`: **BANNED.** Muted neutral gray text rendered over colored saturated backgrounds is prohibited (fails contrast).
 26. `rule-cream-palette`: **BANNED.** Defaulting to warm washed-out beige/cream (`#f5efe2`) as a lazy substitute for a real color system is prohibited.
@@ -230,7 +230,11 @@ To guarantee flawless execution, every component must strictly conform to these 
 ### C. Sizing & Spacing Mechanics
 - **Square Elements:** Use `size-*` as modern baseline (e.g., `size-4`, `size-8`, `size-10`).
 - **Standard Scale:** Stick to the standardized spacing scale (`4`, `8`, `12`, `16`, `24`, `32px`). Never use arbitrary pixel classes like `p-[13px]` or `gap-[7px]`.
-- **Tailwind Version Awareness:** In Tailwind CSS v4, define tokens in CSS via `@theme` directives; in Tailwind v3, define tokens in `tailwind.config.*`. Never inject obsolete v3 config files into v4 setups.
+- **Tailwind Version Awareness:** In Tailwind CSS v4, define tokens in CSS via `@theme` directives using OKLCH or semantic CSS variables (never inject obsolete v3 `tailwind.config.*` or `theme(...)` calls into v4 setups); in Tailwind v3, define tokens in `tailwind.config.*`.
+- **Next.js 15+ & React 19 Framework Contract:**
+  - Always type dynamic App Router pages with async `Promise` props: `type PageProps = { params: Promise<{ slug: string }>; searchParams: Promise<Record<string, string | string[] | undefined>> };` and `await params` before reading.
+  - Note Next.js 15 `fetch` defaults to `no-store` (explicitly opt-in with `revalidate` or `'use cache'` where appropriate).
+  - In React 19 interactive forms/mutations, prefer `useActionState` (replacing deprecated `useFormState`) and `useOptimistic` in Client leaves over manual `useState` loading flags.
 
 ### D. Component Primitives First
 - **No Div-Buttons:** Never use `<div onClick={...}>` or `<span onClick={...}>` as interactive triggers. Use native `<button>` or accessible unstyled primitives (`Base UI`, `Radix UI`, `React Aria`).

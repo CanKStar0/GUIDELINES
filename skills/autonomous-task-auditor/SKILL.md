@@ -81,14 +81,14 @@ Before finalizing any task, evaluate these diagnostic vectors and **fix any gaps
 ```
 
 ### 🛑 Circuit Breaker & Safe Execution Gates:
-- **Max 3 Healing Iterations (`attempts <= 3`):** If the build or test continues to fail after 3 consecutive repair attempts, STOP immediately. Do NOT enter an infinite repair loop. Halt and provide a root-cause summary and terminal logs to the user.
-- **Destructive Command Ban:** Autonomous self-healing must NEVER execute destructive git or filesystem commands (`git reset --hard`, `git clean -fd`, `rm -rf`, `DROP TABLE`). Uncommitted user modifications must always be protected.
+- **Cumulative Max 3 Healing Iterations (`attempts <= 3`):** If the build or test continues to fail after 3 cumulative repair attempts across the task, STOP immediately. Do NOT reset the attempt counter when error types or files change, and do NOT enter an infinite repair loop. Halt and provide a root-cause summary and terminal logs to the user.
+- **Expanded Destructive Command Ban:** Autonomous self-healing must NEVER execute destructive git, package, or filesystem commands (`git reset --hard`, `git clean -fd`, `git checkout -- .`, `git restore .`, `rm -rf`, `DROP TABLE`, `npm install --force`), nor blindly overwrite unread files (`write_file` with `Overwrite: true` without prior `read_file`). Uncommitted user modifications must always be protected.
 
 ---
 
 ## 📋 5. Deliverable Audit Card
 
-Conclude completed tasks with a concise audit summary:
+Conclude completed tasks with a concise audit summary. **Anti-Self-Attestation Rule:** You must NEVER fabricate verification claims; the `Empirical Verification` line must cite the actual command executed and at least one observed line/exit code from this session's tool output:
 
 ```markdown
 ### 📋 Autonomous Task Audit Summary
@@ -96,5 +96,6 @@ Conclude completed tasks with a concise audit summary:
 * 🛡️ **Security & Resilience:** Strict validation, rate limiting, timeout budgets, and sanitized error masking.
 * 🎨 **UI/UX & States:** Conforms to project design tokens and applicable component states.
 * 🔧 **Autonomous Fixes:** [List of issues automatically identified and resolved during self-audit].
-* ✅ **Empirical Verification:** `npx tsc --noEmit` & `npm run build` (Exit Code 0).
+* 🔨 **Static Build/Types:** `[command run]` ➔ `[observed exit code / summary line from tool output]`.
+* 🧪 **Real Runtime / E2E:** `[Playwright / browser / live HTTP + DB test result]` ➔ `[observed pass/fail evidence, or explicitly UNVERIFIED if server/browser could not run]`.
 ```

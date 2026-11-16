@@ -40,6 +40,8 @@ GUIDELINES/
 ├── MASTER_AGENT_CONSTITUTION.md       # Core AI Constitution, System Persona & Execution Disciplines
 ├── PROJECT_AGENT_TEMPLATE.md          # Universal, cross-platform AGENTS.md template for projects
 ├── PROJECT_AGENT_GENERATOR_PROMPT.txt # Read-only prompt to inspect stacks and auto-generate AGENTS.md
+├── rules/                             # Global Execution, Verification, Security, SEO & Browser Rules
+├── archive/                           # Legacy archived modules (canvex, openseo)
 ├── skills/                            # On-Demand Specialized Engineering Skills
 │   ├── master-orchestrator/           # Intent router & multi-skill orchestration engine
 │   ├── bespoke-frontend-master/       # Bespoke design tokens, anti-AI-slop UI, a11y & motion
@@ -52,7 +54,9 @@ GUIDELINES/
 │   ├── superpowers-execution-harness/ # Multi-language i18n, 4-pillar QA auditing & verification gates
 │   ├── create-design-md/              # 60-30-10 palettes, typography scales & DESIGN.md generation
 │   ├── image-generation-studio/       # Text-free studio lighting asset generation directives
-│   └── antigravity-guide/             # Antigravity CLI, subagents & background task orchestration
+│   ├── antigravity-guide/             # Antigravity CLI, subagents & background task orchestration
+│   ├── simple-issue-description/      # Plain-language, behavior-focused issue & PR summarization
+│   └── humanizer/                     # 26-pattern AI writing detector & natural human prose rewriter
 └── README.md
 ```
 
@@ -74,6 +78,8 @@ GUIDELINES/
 | **`create-design-md`** | Bootstraps a comprehensive, accessible design token contract (`DESIGN.md`) using the 60-30-10 color rule. |
 | **`image-generation-studio`** | Generates prompt matrices for commercial studio renders, clean floor shadows, and isolated product photography (zero text). |
 | **`antigravity-guide`** | Reference manual for Google Antigravity, subagent delegation, and background daemon scheduling. |
+| **`simple-issue-description`** | Converts rough bug reports, PRs, or feature notes into concise, behavior-focused plain-language issues. |
+| **`humanizer`** | Strips 26 structural and lexical AI writing tells (*not-X-but-Y*, forced triads, inflated claims, chatbot residue) while preserving facts and voice. |
 
 ---
 
@@ -90,9 +96,24 @@ git clone https://github.com/CanKStar0/GUIDELINES.git C:/GUIDELINES
 git clone https://github.com/CanKStar0/GUIDELINES.git ~/GUIDELINES
 ```
 
+### 2. Link Antigravity Runtime (Multi-PC SSOT Sync)
+Link `~/.gemini/config/skills` and `~/.gemini/config/rules` directly to your cloned repo so `git pull` updates everything automatically across all machines:
+
+```powershell
+# Windows (PowerShell - replaces existing folders with Directory Junctions)
+New-Item -ItemType Junction -Path "$env:USERPROFILE\.gemini\config\skills" -Target "C:\GUIDELINES\skills"
+New-Item -ItemType Junction -Path "$env:USERPROFILE\.gemini\config\rules"  -Target "C:\GUIDELINES\rules"
+```
+
+```bash
+# macOS / Linux
+ln -s ~/GUIDELINES/skills ~/.gemini/config/skills
+ln -s ~/GUIDELINES/rules  ~/.gemini/config/rules
+```
+
 ---
 
-### 2. Connect Your Project (Zero Bloat)
+### 3. Connect Your Project (Zero Bloat)
 
 Copy [PROJECT_AGENT_TEMPLATE.md](./PROJECT_AGENT_TEMPLATE.md) into your project root as **`AGENTS.md`**:
 
@@ -120,7 +141,7 @@ Copy [PROJECT_AGENT_TEMPLATE.md](./PROJECT_AGENT_TEMPLATE.md) into your project 
 
 ---
 
-### 3. Tool Compatibility Matrix
+### 4. Tool Compatibility Matrix
 
 * **Antigravity / Gemini CLI:** Automatically discovers `AGENTS.md` at root and applies the persona and skills.
 * **Cursor:** Reads root `AGENTS.md` natively as the project-wide system instruction.

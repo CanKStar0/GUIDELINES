@@ -48,12 +48,12 @@ The following security vulnerabilities are **STRICTLY PROHIBITED**:
 
 ### 2. XSS (Cross-Site Scripting) Defense
 - All dynamic user-submitted HTML must be sanitized before rendering into the DOM:
-  - React / Next.js: Raw `dangerouslySetInnerHTML` is prohibited unless explicitly sanitized. For Server-Side Rendering (SSR) and React Server Components (RSC), use `isomorphic-dompurify` (standard `DOMPurify` will crash with `window is not defined` on the server).
+  - React / Next.js: Raw `dangerouslySetInnerHTML` is prohibited unless explicitly sanitized. For Node.js SSR, use `isomorphic-dompurify`; for Edge runtimes (Cloudflare Workers / Vercel Edge), avoid `isomorphic-dompurify` (its `jsdom` dependency bloats/breaks Edge bundles) and sanitize at the API boundary or use lightweight Edge-safe parsers / client-leaf sanitization.
   - Raw unescaped user data must never be directly injected into markup; preserve React's default string escaping and `textContent` bindings.
 
-### 3. Cryptographic Authentication (Argon2id Baseline)
+### 3. Cryptographic Authentication & Modern Session Architecture
 - Passwords must never be stored in plain text or with obsolete hashes (MD5, SHA1, SHA256 without salting).
-- Baseline: **Argon2id** or **Bcrypt (work factor >= 12)**:
+- **Custom Password Hashing Baseline:** **Argon2id** or **Bcrypt (work factor >= 12)**:
 ```typescript
 import argon2 from "argon2";
 
@@ -65,6 +65,7 @@ export async function verifyPassword(hash: string, plain: string): Promise<boole
   return await argon2.verify(hash, plain);
 }
 ```
+- **Modern Next.js 15+ / RSC Auth:** Prefer **Better-Auth** or **Auth.js v5** (avoid deprecated Lucia Auth). Never rely solely on Next.js `middleware.ts` for authorization; always re-verify `session?.user?.id` inside every Server Action, Route Handler, and RSC data-fetch boundary.
 
 ### 4. HTTP Security Headers
 Injected at middleware or reverse proxy (`next.config.js` / Cloudflare) layers:

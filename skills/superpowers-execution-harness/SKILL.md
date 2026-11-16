@@ -13,10 +13,10 @@ This skill enforces high-discipline execution, eliminates shallow/hasty patching
 
 The following AI habits and execution shortcuts are **STRICTLY PROHIBITED**:
 
-### 1. Mocking Everything / Testing Nothing is BANNED
-- ❌ **Prohibited:** Writing unit tests that mock the database, mock the service, mock the fetch call, and assert trivialities like `expect(true).toBe(true)`.
-- 💣 **Failure Mode:** Code ships to production with passing tests, but fails immediately on runtime queries, real data payloads, or network serialization.
-- ✅ **Mandatory:** Tests must validate real contracts, actual Zod schemas, real state transitions, and integration error cases.
+### 1. Mocking Everything / Code-Only Testing is BANNED
+- ❌ **Prohibited:** Writing unit tests that mock the database, mock the service, mock the fetch call, and assert trivialities like `expect(true).toBe(true)` — OR treating `tsc --noEmit` / `npm run build` as proof that the feature works at runtime.
+- 💣 **Failure Mode:** Code compiles and "unit tests" pass, while real users hit 500 errors, broken UI clicks, failed DB writes, hydration crashes, or unauthenticated leaks in production.
+- ✅ **Mandatory:** Test real behavior end-to-end: real HTTP requests against live endpoints + real DB persistence for backend, and Playwright E2E or live browser (`browser` subagent / `browsermcp`) interaction + reload persistence for UI.
 
 ### 2. Bypassing Type Errors with `@ts-ignore` or `any` is BANNED
 - ❌ **Prohibited:** Silencing TypeScript compiler errors by slapping `// @ts-ignore`, `// @ts-nocheck`, `// @ts-expect-error`, `/* eslint-disable */`, or casting `(data as any)` / `(data as unknown as SpecificType)` onto broken code.
@@ -50,11 +50,16 @@ The following AI habits and execution shortcuts are **STRICTLY PROHIBITED**:
    - If a file has already been read in this conversation session, reuse working memory; never read the same file repeatedly.
 4. **Root-Cause Remediation (Anti-Regression):**
    - Superficial patches are banned. Resolve null pointer risks, CSS overflow bounds, and API failure modes at the architectural root.
-5. **Empirical Verification Gate & Circuit Breaker:**
-   - A task is NEVER complete until automated verification (TypeScript `npm run build` / `npx tsc --noEmit`, Python `pytest`, or project build command) passes with **Exit Code 0**.
-   - **Circuit Breaker (`attempts <= 3`):** If verification fails 3 consecutive times with no error reduction, halt immediately. Do not thrash in a continuous fix-break cycle; report findings and logs to the user.
-6. **Destructive Command Ban:**
-   - The shell must NEVER execute destructive git or filesystem commands (`git reset --hard`, `git clean -fd`, `rm -rf`, `DROP TABLE`). Uncommitted user code must never be overwritten.
+5. **2-Stage Verification Gate (Static + Real Runtime) & Cumulative Circuit Breaker:**
+   - **Stage 1 (Static):** `npm run build` / `npx tsc --noEmit` must pass with **Exit Code 0** (necessary, never sufficient on its own).
+   - **Stage 2 (Real Runtime & E2E):** Start the app/server and verify real behavior:
+     - *UI / Full-Stack:* Run Playwright E2E or live browser (`browser` subagent / `browsermcp`) checks: real clicks, form submissions, post-reload persistence, zero `console.error`/`pageerror`, zero unexpected 4xx/5xx network responses, and 375px mobile overflow check.
+     - *Backend / API:* Send real HTTP requests (happy path + `400/401/403/422` failure paths) and verify real DB persistence.
+     - *CLI / Library / Script:* Execute the actual binary/script with real arguments and fixture inputs, verifying stdout/stderr, generated files, and exit codes (never rely on static `tsc` alone).
+     - *Honest Scope:* If runtime/browser verification cannot run in the current environment, explicitly report runtime behavior as `UNVERIFIED` rather than claiming it works.
+   - **Cumulative Circuit Breaker (`attempts <= 3`):** If verification fails 3 cumulative times across the task, halt immediately. Do NOT reset the counter when error messages or target files change. Report findings and logs to the user.
+6. **Expanded Destructive Command Ban:**
+   - The shell must NEVER execute destructive git, package, or filesystem commands (`git reset --hard`, `git clean -fd`, `git checkout -- .`, `git restore .`, `rm -rf`, `DROP TABLE`, `npm install --force`), nor blindly overwrite unread files via `write_file`. Uncommitted user code must never be overwritten.
 
 ---
 
